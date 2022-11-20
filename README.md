@@ -74,3 +74,9 @@ npm run dev
 ### Deployment
 
 TBD. Vercel for frontend, Planetscale/AWS/digital-ocean for DB probably.
+
+
+### Build
+
+[![CI / Build](https://github.com/luke-h1/travelio/actions/workflows/build.yml/badge.svg)](https://github.com/luke-h1/travelio/actions/workflows/build.yml)
+
