@@ -7,8 +7,72 @@ $rosewood: #5e0b15;
 $redviolet: #90323d;
 $earthyellow: #d3a15f;
 $mainBackground: ligten($bone, 10%);
+$black: #0c0c0c;
+$dark: #292929;
+$light-dark: #333333;
 
+$light: #fafafa;
+$primary: #f5f5f5;
+$pink: #ff4081;
 // media breakpoints
 $sm: 480px;
 $md: 768px;
 $lg: 1024px;
+
+// Form components
+// font size
+$react-formik-components-font-size: 1rem;
+
+// colors
+$react-formik-components-color-white: #ffffff;
+$react-formik-components-color: #212121;
+$react-formik-components-border-color: #bdbdbd;
+$react-formik-components-radio-button-fill-color: #1976d2;
+$react-formik-components-error-color: #d32f2f;
+
+// border-radius
+$react-formik-components-border-radius: 0;
+
+// label
+$react-formik-components-label-padding-x-start: 24px;
+$react-formik-components-label-before-position-x-start: 0;
+$react-formik-components-label-before-position-y-start: 2px;
+$react-formik-components-label-width: 16px;
+$react-formik-components-label-height: 16px;
+
+// checkbox label
+$react-formik-components-checkbox-label-background-size: 16px;
+$react-formik-components-checkbox-label-background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23ffffff'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z'/%3E%3C/svg%3E");
+
+// radiobutton
+$react-formik-components-radio-label-background-size: 12px;
+$react-formik-components-radio-label-background-image: url("data:image/svg+xml, %3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24'%3E%3Cg%3E%3Ccircle cx='12' cy='12' r='12' fill='%231976d2'%3E%3C/circle%3E%3C/g%3E%3C/svg%3E");
+
+// input
+$react-formik-components-input-height: 40px;
+$react-formik-components-input-textarea-height: 80px;
+$react-formik-components-input-margin-y: 8px 0;
+
+//select
+$react-formik-components-select-min-height: 40px;
+
+//inline
+$react-formik-components-inline-margin-x: 16px;
+
+// footer
+
+$bezier-swift: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$bezier-snappy: cubic-bezier(0.2, 0.8, 0.4, 1);
+$font-primary: 'GT-Walsheim';
+$box-shadow: 0 0 1px 0 rgba(189, 192, 207, 0.06),
+  0 10px 16px -1px rgba(189, 192, 207, 0.2);
+$box-shadow-hover: 0 0 1px 0 rgba(189, 192, 207, 0.06),
+  0 10px 16px -1px rgba(189, 192, 207, 0.4);
+$color-primary: #6469ff;
+$color-black: #222328;
+$color-paragraph: rgb(102, 110, 117);
+$color-base-100: #fafafc;
+$color-base-200: #e6ebf4;
+$color-base-300: #bdc0cf;
+$color-base-400: #666;
+$color-error: #ff5b5b;

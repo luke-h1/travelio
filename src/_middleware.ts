@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { siteConfig } from './config';
 
 const protectedPages = [
-  '/',
+  '/home',
   'holiday',
   'holidays/[id]',
   '/user/[id]',

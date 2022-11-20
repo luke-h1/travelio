@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Form, Formik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import InputField from '../../components/InputField';
+import InputField from '../../components/InputField/InputField';
 import styles from './Login.module.scss';
 
 const LoginPage = () => {
@@ -30,9 +30,9 @@ const LoginPage = () => {
 
             if (res.errors && res.errors.length > 0) {
               setErrors(toErrorMap(res.errors));
+            } else {
+              router.push('/home');
             }
-
-            router.push('/');
           } catch (e) {
             // eslint-disable-next-line no-console
             console.error(e);

@@ -2,15 +2,12 @@ import { useMe } from '@frontend/hooks/useMe';
 import { useRouter } from 'next/router';
 import { ComponentType } from 'react';
 
-const withAuth = (
-  WrappedComponent: ComponentType,
-  redirectPath = '/auth/login',
-) => {
+const withAdmin = (WrappedComponent: ComponentType, redirectPath = '/') => {
   const AuthRedirectWrapper = (props = {}) => {
     const router = useRouter();
     const { user, isLoading } = useMe();
 
-    if (!user && !isLoading) {
+    if (!isLoading && user?.role !== 'ADMIN') {
       router.push(redirectPath);
       return null;
     }
@@ -18,4 +15,4 @@ const withAuth = (
   };
   return AuthRedirectWrapper;
 };
-export default withAuth;
+export default withAdmin;

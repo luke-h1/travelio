@@ -1,20 +1,6 @@
 @import '../variables.scss';
 @import './mixins.scss';
 
-.container {
-  width: 90%;
-  margin: auto;
-
-  @include media(sm) {
-    width: 80%;
-  }
-
-  @include media(md) {
-    width: 75%;
-    max-width: map-get($breakpoints, 'md');
-  }
-}
-
 .flex {
   display: flex;
   &-fc {
