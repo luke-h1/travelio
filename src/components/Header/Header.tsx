@@ -17,7 +17,7 @@ const noAuthLinks = [
 
 const Header = (): JSX.Element => {
   const router = useRouter();
-  const { user } = useMe();
+  const { isLoading, user } = useMe();
   const pathname = router.pathname.split('/[')[0]; // active paths on dynamic subpages
   return (
     <>
@@ -37,7 +37,7 @@ const Header = (): JSX.Element => {
           </Link>
           <nav className={styles.nav}>
             <ol className={styles.links}>
-              {user
+              {user && user.id && !isLoading
                 ? authLinks.map(({ name, path }) => (
                     <li
                       key={path}

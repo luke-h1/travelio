@@ -43,7 +43,7 @@ This project is a travel journal. It is a Next.js website that allows users to c
 -  ❌ hol pagination
 
 -  ❌ Admin utils
-
+-  ❌ Set different cookie for preview & production deploys
 
 ### Development
 
