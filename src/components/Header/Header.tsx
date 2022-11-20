@@ -25,14 +25,14 @@ const Header = (): JSX.Element => {
         <div className={styles.container}>
           <Link href="/" className={styles.logo}>
             <Image
-              src="public/blur.png"
+              src="/blur.png"
               alt="blur"
               layout="fixed"
               width="45"
               height="45"
               priority
               placeholder="blur"
-              blurDataURL="public/blur.png"
+              blurDataURL="/blur.png"
             />
           </Link>
           <nav className={styles.nav}>
