@@ -1,3 +1,4 @@
+import HolidayCard from '@frontend/components/HolidayCard/HolidayCard';
 import { validateToken } from '@frontend/utils/auth';
 import prisma from '@frontend/utils/prisma';
 import { Holiday } from '@prisma/client';
@@ -11,9 +12,13 @@ const Home: NextPage<Props> = ({ holidays }) => {
   return (
     <div>
       <h1>Home</h1>
-      {holidays && holidays.length > 0
-        ? 'holidays'
-        : 'no holidays. go create some'}
+      {holidays && holidays.length > 0 ? (
+        holidays.map(hol => <HolidayCard holiday={hol} key={hol.id} />)
+      ) : (
+        <div>
+          <h2>No holidays. Go create some!</h2>
+        </div>
+      )}
     </div>
   );
 };
@@ -37,6 +42,9 @@ export const getServerSideProps: GetServerSideProps<Props> = async ctx => {
   const holidays = await prisma.holiday.findMany({
     where: {
       userId: user.id,
+    },
+    orderBy: {
+      startDate: 'asc',
     },
   });
 

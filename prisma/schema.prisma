@@ -29,8 +29,8 @@ model Holiday {
   id        String   @id @default(cuid())
   title     String
   notes     String?
-  startDate DateTime @db.Timestamptz(6)
-  endDate   DateTime @db.Timestamptz(6)
+  startDate String
+  endDate   String
   favourite Boolean  @default(false)
   tags      String[]
   country   String
