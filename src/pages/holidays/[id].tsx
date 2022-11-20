@@ -1,3 +1,4 @@
+import Page from '@frontend/components/Page/Page';
 import prisma from '@frontend/utils/prisma';
 import { Holiday } from '@prisma/client';
 import { GetServerSideProps, NextPage } from 'next';
@@ -8,9 +9,9 @@ interface Props {
 
 const HolidayPage: NextPage<Props> = ({ holiday }) => {
   return (
-    <div>
+    <Page>
       <h1>Holiday {holiday?.id}</h1>
-    </div>
+    </Page>
   );
 };
 

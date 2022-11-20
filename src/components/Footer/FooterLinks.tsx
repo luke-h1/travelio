@@ -25,9 +25,7 @@ const FooterLinks = () => {
       {links &&
         links.map(link => (
           <li key={link.id}>
-            <Link href={link.slug} legacyBehavior>
-              {link.name}
-            </Link>
+            <Link href={link.slug}>{link.name}</Link>
           </li>
         ))}
     </ul>
