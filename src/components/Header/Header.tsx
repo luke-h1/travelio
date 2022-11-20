@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import avatar from 'public/blur.png';
 import styles from './Header.module.scss';
 
 const authLinks = [
@@ -26,13 +25,14 @@ const Header = (): JSX.Element => {
         <div className={styles.container}>
           <Link href="/" className={styles.logo}>
             <Image
-              src={avatar}
+              src="public/blur.png"
               alt="blur"
               layout="fixed"
               width="45"
               height="45"
               priority
               placeholder="blur"
+              blurDataURL="public/blur.png"
             />
           </Link>
           <nav className={styles.nav}>
