@@ -1,0 +1,62 @@
+@import '../../styles/variables.scss';
+
+.cSelect {
+  font-size: $react-formik-components-font-size !important;
+
+  &__label,
+  &__message {
+    display: block;
+  }
+
+  &__label {
+    &.isRtl {
+      direction: rtl;
+      text-align: right;
+    }
+  }
+
+  &__label {
+    color: $react-formik-components-color !important;
+  }
+
+  &__control {
+    background-color: $react-formik-components-color-white !important;
+    border: 1px solid $react-formik-components-border-color !important;
+    min-height: $react-formik-components-select-min-height !important;
+    border-radius: $react-formik-components-border-radius !important;
+    margin: $react-formik-components-input-margin-y !important;
+    color: $react-formik-components-color !important;
+    width: 100% !important;
+
+    &--is-focused {
+      border-color: $react-formik-components-color !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+
+  &__menu {
+    border-radius: $react-formik-components-border-radius !important;
+    border: 1px solid $react-formik-components-border-color;
+    box-shadow: none !important;
+  }
+
+  &__value-containe {
+    padding: 0 !important;
+  }
+
+  &__message {
+    color: $react-formik-components-error-color !important;
+
+    &.isRtl {
+      direction: rtl;
+      text-align: right;
+    }
+  }
+
+  &.error {
+    .c-select__control {
+      border-color: $react-formik-components-error-color !important;
+    }
+  }
+}
