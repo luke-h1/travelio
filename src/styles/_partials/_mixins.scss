@@ -1,0 +1,66 @@
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+) !default;
+
+@mixin media($breakpoint, $map: $breakpoints) {
+  @if type-of($map) == map {
+    @if map-has-key($map, $breakpoint) {
+      @media (min-width: #{map-get($map, $breakpoint)}) {
+        @content;
+      }
+    } @else {
+      @warn "No value could be retrieved from `#{breakpoint}`." + "Available breakpoints: #{map-keys($map)}";
+    }
+  } @else {
+    @warn "the map `#{$map}` isn't defined or is invalid." + "Available maps: #{map-keys($breakpoints)}";
+  }
+}
+
+@mixin media-max($breakpoint) {
+  $max-width: get-next($breakpoint, $map: $breakpoints);
+  @media (max-width: ($max-width -1)) {
+    @content;
+  }
+}
+
+@mixin media-min($breakpoint) {
+  $max-width: get-next($breakpoint, $map: $breakpoints);
+  @media (min-width: ($min-width -1)) {
+    @content;
+  }
+}
+
+@function get-next($key, $map) {
+  @if map-has-key($map, $key) {
+    $i: 0;
+    $key-index: false;
+
+    @each $map-key, $map-value in $map {
+      $i: $i + 1;
+
+      @if $map-key == $key {
+        $key-index: $i;
+      }
+
+      @if $i == $key-index + 1 {
+        @return $map-value;
+      }
+
+      @if $i == length($map) {
+        @return $map-value;
+      }
+    }
+  }
+}
+
+@mixin error-border {
+  border-color: $redviolet;
+}
+
+@mixin error-text {
+  color: $redviolet;
+  margin-top: 0.25em;
+  font-size: 0.75rem;
+}

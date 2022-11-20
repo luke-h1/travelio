@@ -1,0 +1,139 @@
+@import '../variables.scss';
+@import './mixins.scss';
+
+.container {
+  width: 90%;
+  margin: auto;
+
+  @include media(sm) {
+    width: 80%;
+  }
+
+  @include media(md) {
+    width: 75%;
+    max-width: map-get($breakpoints, 'md');
+  }
+}
+
+.flex {
+  display: flex;
+  &-fc {
+    flex-direction: column;
+  }
+
+  &-jc-c {
+    justify-content: center;
+  }
+
+  &-jc-sb {
+    justify-content: space-between;
+  }
+
+  &-jc-fe {
+    justify-content: flex-end;
+  }
+
+  &-ai-c {
+    align-items: center;
+  }
+
+  &-ai-fe {
+    align-items: flex-end;
+  }
+
+  &-ai-s {
+    align-items: stretch;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.btn {
+  min-width: 4em;
+  padding: 0.5em 1em;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $darkumber;
+  cursor: pointer;
+
+  &-primary {
+    background-color: $redviolet;
+    border-color: darken($redviolet, 3%);
+    color: #fff;
+
+    &:hover {
+      background: linear-gradient($redviolet, lighten($redviolet, 3%));
+
+      &:active,
+      &:focus {
+        border-color: darken($redviolet, 3%);
+      }
+    }
+
+    &:disabled {
+      background: rgba($redviolet, 80%);
+      border-color: rgba($redviolet, 80%);
+    }
+  }
+
+  &-secondary {
+    background-color: inherit;
+    border-color: lighten($shadow, 20%);
+
+    &:hover {
+      background: linear-gradient(lighten($bone, 5%), lighten($bone, 3%));
+
+      &:active,
+      &:focus {
+        border-color: $shadow;
+      }
+    }
+
+    &:disabled {
+      color: rgba($darkumber, 80%);
+    }
+  }
+
+  &-icon {
+    min-width: 0;
+    background: none;
+    border: none;
+    padding: 0;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: lighten($darkumber, 10%);
+    }
+  }
+
+  &-text {
+    background-color: inherit;
+    font-size: 1rem;
+    font-weight: 400;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:disabled {
+      color: lighten($darkumber, 15%);
+    }
+  }
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.text-left {
+  text-align: left;
+}

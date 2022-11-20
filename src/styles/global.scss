@@ -1,0 +1,92 @@
+@import './variables.scss';
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+}
+
+body {
+  background-color: lighten($bone, 5%);
+  color: $darkumber;
+}
+
+h2 {
+  color: $redviolet;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: $rosewood;
+  text-decoration: none;
+}
+
+input,
+textarea {
+  padding: 0.5em 1em;
+  font-size: 0.875rem;
+  border: none;
+  border-radius: 3px;
+}
+
+textarea {
+  resize: none;
+}
+
+.df {
+  display: flex;
+
+  &-fc {
+    flex-direction: column;
+  }
+
+  &-jc-c {
+    justify-content: center;
+  }
+
+  &-jc-sb {
+    justify-content: space-between;
+  }
+
+  &-jc-fe {
+    justify-content: flex-end;
+  }
+
+  &-ai-c {
+    align-items: center;
+  }
+
+  &-ai-fe {
+    align-items: flex-end;
+  }
+
+  &-ai-s {
+    align-items: stretch;
+  }
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+
+  @media (min-width: $sm) {
+    width: 80%;
+  }
+
+  @media (min-width: $md) {
+    width: 75%;
+    max-width: $lg;
+  }
+}

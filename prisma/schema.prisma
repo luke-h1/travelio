@@ -1,0 +1,53 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  firstName String
+  lastName  String
+  email     String    @unique
+  password  String
+  role      Role      @default(USER)
+  holidays  Holiday[]
+  bio       String?
+  createdAt DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime  @default(now()) @updatedAt @db.Timestamptz(6)
+
+  @@map("users")
+}
+
+model Holiday {
+  id        String   @id @default(cuid())
+  title     String
+  notes     String?
+  startDate DateTime @db.Timestamptz(6)
+  endDate   DateTime @db.Timestamptz(6)
+  favourite Boolean  @default(false)
+  tags      String[]
+  country   String
+  city      String
+  rating    Float?
+  latitude  Float?
+  longitude Float?
+  image     String?
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String
+  createdAt DateTime @default(now()) @db.Timestamptz(6)
+  updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz(6)
+
+  @@map("holidays")
+}
+
+enum Role {
+  ADMIN
+  USER
+}

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  db:
+    container_name: travelio
+    image: 'postgres:latest'
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: travelio
+      POSTGRES_PASSWORD: travelio
+      POSTGRES_DB: travelio
+    volumes: 
+      - .dbdata:/var/lib/postgres 
+    expose:
+      - 5432

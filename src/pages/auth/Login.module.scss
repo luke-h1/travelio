@@ -1,0 +1,45 @@
+@import '../../styles/variables.scss';
+@import '../../styles/_partials/_mixins.scss';
+
+.login,
+.demo {
+  width: 100%;
+  margin: auto;
+
+  @include media(sm) {
+    width: 20em;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 0;
+  }
+}
+
+.login {
+  margin-bottom: 2em;
+
+  @include media(sm) {
+    padding: 1em;
+    border-radius: 3px;
+    border: 2px solid $bone;
+  }
+
+  & > *:not(:first-child) {
+    margin-top: 1em;
+  }
+
+  .error {
+    margin-bottom: 0;
+  }
+}
+
+.demo {
+  padding: 1em;
+  background-color: $bone;
+  border-radius: 3px;
+
+  p {
+    margin: 0.5em 0;
+  }
+}
