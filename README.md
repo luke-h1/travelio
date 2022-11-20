@@ -73,7 +73,7 @@ npm run dev
 
 ### Deployment
 
-TBD. Vercel for frontend, Planetscale/AWS/digital-ocean for DB probably.
+TBD. Vercel for frontend, Fly.io or https://render.com for DB probably.
 
 
 ### Build
