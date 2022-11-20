@@ -27,6 +27,8 @@ This project is a travel journal. It is a Next.js website that allows users to c
 -  ✅ User roles
 -  ✅ Holiday card
 -  ✅ Navigation
+-  ✅ Deploy CI / CD
+-  ✅ Custom domain
 
 -  ❌ User profiles
 -  ❌ User settings
