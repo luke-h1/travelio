@@ -16,7 +16,7 @@ const Home: NextPage<Props> = ({ holidays }) => {
         holidays.map(hol => <HolidayCard holiday={hol} key={hol.id} />)
       ) : (
         <div>
-          <h2>No holidays. Go create some!</h2>
+          <h2>No holidays. Go take some!</h2>
         </div>
       )}
     </div>

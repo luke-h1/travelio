@@ -9,7 +9,7 @@ interface Props {
 
 const HolidayCard = ({ holiday }: Props) => {
   return (
-    <Link href={`/holiday/${holiday.id}`}>
+    <Link href={`/holidays/${holiday.id}`}>
     <div className={styles.card}>
         <div className={styles.cardImg}>
           <img
