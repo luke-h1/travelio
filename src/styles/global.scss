@@ -78,19 +78,21 @@ textarea {
 }
 
 .container {
-  width: 90%;
-  margin: auto;
+  width: 100%;
+  max-width: 100%;
+  padding-left: 24px;
+  padding-right: 24px;
+  margin: 0 auto;
 
-  @media (min-width: $sm) {
-    width: 80%;
+  @include media(md) {
+    max-width: 900px;
+    padding: 0 auto;
   }
 
-  @media (min-width: $md) {
-    width: 75%;
-    max-width: $lg;
+  @include media(lg) {
+    max-width: 1050px;
   }
 }
-
 
 input[type='checkbox'] {
   visibility: hidden;
