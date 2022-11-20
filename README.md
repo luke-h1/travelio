@@ -5,7 +5,7 @@ Travel journal
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/)
-- [NPM](npmjs.com)
+- [NPM](https://npmjs.com)
 - [NVM](https://github.com/nvm-sh/nvm)
 
 Install NPM packages
