@@ -1,4 +1,5 @@
 @import './variables.scss';
+@import './_partials/mixins';
 
 html,
 body {
@@ -29,7 +30,7 @@ p {
 }
 
 a {
-  color: #000;
+  color: #000 !important;
   text-decoration: none;
 }
 
