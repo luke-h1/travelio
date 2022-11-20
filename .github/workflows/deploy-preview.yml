@@ -65,8 +65,9 @@ jobs:
       # - name: Install Playwright Browsers
       #   run: npx playwright install --with-deps
 
-      - name: local UI tests
-        run: npm run e2e:local
+      # - name: local UI tests
+      #   run: npm run e2e:local
+
       - uses: actions/upload-artifact@v3
         if: always()
         with:
