@@ -1,12 +1,13 @@
+import Page from '@frontend/components/Page/Page';
 import { useMe } from '@frontend/hooks/useMe';
 
 const ProfilePage = () => {
   const { user } = useMe();
   return (
-    <div>
+    <Page>
       <h1>Profile</h1>
       <p>{user?.email}</p>
-    </div>
+    </Page>
   );
 };
 

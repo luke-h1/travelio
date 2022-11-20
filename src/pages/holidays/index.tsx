@@ -1,4 +1,5 @@
 import HolidayCard from '@frontend/components/HolidayCard/HolidayCard';
+import Page from '@frontend/components/Page/Page';
 import { validateToken } from '@frontend/utils/auth';
 import prisma from '@frontend/utils/prisma';
 import { Holiday } from '@prisma/client';
@@ -10,7 +11,7 @@ interface Props {
 
 const Home: NextPage<Props> = ({ holidays }) => {
   return (
-    <div>
+    <Page>
       <h1>Home</h1>
       {holidays && holidays.length > 0 ? (
         holidays.map(hol => <HolidayCard holiday={hol} key={hol.id} />)
@@ -19,7 +20,7 @@ const Home: NextPage<Props> = ({ holidays }) => {
           <h2>No holidays. Go take some!</h2>
         </div>
       )}
-    </div>
+    </Page>
   );
 };
 

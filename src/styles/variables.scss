@@ -10,10 +10,14 @@ $mainBackground: ligten($bone, 10%);
 $black: #0c0c0c;
 $dark: #292929;
 $light-dark: #333333;
-
+$siteWidth: 83ch;
+$border: rgba(0, 0, 0, 0.08);
+$borderActive: rgba(0, 0, 0, 0.25);
 $light: #fafafa;
 $primary: #f5f5f5;
 $pink: #ff4081;
+$text: #000;
+$textTinted: rgba(0, 0, 0, 0.5);
 // media breakpoints
 $sm: 480px;
 $md: 768px;
