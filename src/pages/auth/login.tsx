@@ -6,7 +6,7 @@ import classNames from 'classnames';
 import { Form, Formik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import InputField from '../../components/InputField';
+import InputField from '../../components/InputField/InputField';
 import styles from './Login.module.scss';
 
 const LoginPage = () => {
