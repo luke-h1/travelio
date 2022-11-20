@@ -19,7 +19,6 @@ $sm: 480px;
 $md: 768px;
 $lg: 1024px;
 
-
 // Form components
 // font size
 $react-formik-components-font-size: 1rem;
@@ -60,19 +59,20 @@ $react-formik-components-select-min-height: 40px;
 //inline
 $react-formik-components-inline-margin-x: 16px;
 
-
 // footer
 
 $bezier-swift: cubic-bezier(0.175, 0.885, 0.32, 1.275);
-$bezier-snappy: cubic-bezier(.2, .8, .4, 1);
+$bezier-snappy: cubic-bezier(0.2, 0.8, 0.4, 1);
 $font-primary: 'GT-Walsheim';
-$box-shadow: 0 0 1px 0 rgba(189, 192, 207, 0.06), 0 10px 16px -1px rgba(189, 192, 207, 0.2);
-$box-shadow-hover: 0 0 1px 0 rgba(189, 192, 207, 0.06), 0 10px 16px -1px rgba(189, 192, 207, 0.4);
-$color-primary: #6469FF;
+$box-shadow: 0 0 1px 0 rgba(189, 192, 207, 0.06),
+  0 10px 16px -1px rgba(189, 192, 207, 0.2);
+$box-shadow-hover: 0 0 1px 0 rgba(189, 192, 207, 0.06),
+  0 10px 16px -1px rgba(189, 192, 207, 0.4);
+$color-primary: #6469ff;
 $color-black: #222328;
 $color-paragraph: rgb(102, 110, 117);
-$color-base-100: #FAFAFC;
-$color-base-200: #E6EBF4;
-$color-base-300: #BDC0CF;
+$color-base-100: #fafafc;
+$color-base-200: #e6ebf4;
+$color-base-300: #bdc0cf;
 $color-base-400: #666;
-$color-error: #FF5B5B;
+$color-error: #ff5b5b;
