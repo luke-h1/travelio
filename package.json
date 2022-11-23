@@ -85,7 +85,7 @@
     "@types/rss": "^0.0.29",
     "@types/string-hash": "^1.1.1",
     "@types/tinycolor2": "^1.4.3",
-    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/eslint-plugin": "^5.44.0",
     "@typescript-eslint/parser": "^5.44.0",
     "babel-plugin-superjson-next": "^0.4.4",
     "eslint": "8.28.0",
