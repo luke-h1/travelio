@@ -4,7 +4,6 @@ import prisma from '@frontend/utils/prisma';
 import bcrypt from 'bcrypt';
 import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
-import omit from 'lodash/omit';
 
 import { NextApiRequest, NextApiResponse } from 'next';
 
@@ -41,7 +40,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       }),
     );
 
-    const response = makeApiResponse(omit(user, 'password'), []);
+    const response = makeApiResponse(user, []);
     res.status(200).json(response);
   } else {
     res.status(401).json({
