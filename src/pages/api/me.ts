@@ -1,6 +1,7 @@
 import { validateRoute } from '@frontend/utils/auth';
 import prisma from '@frontend/utils/prisma';
 import { User } from '@prisma/client';
+import omit from 'lodash/omit';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default validateRoute(
@@ -26,7 +27,7 @@ export default validateRoute(
     });
 
     res.status(200).json({
-      ...(user as User),
+      ...omit(user as User, 'password'),
       hols,
     });
   },
