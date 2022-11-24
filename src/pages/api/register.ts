@@ -4,6 +4,7 @@ import prisma from '@frontend/utils/prisma';
 import bcrypt from 'bcrypt';
 import cookie from 'cookie';
 import jwt from 'jsonwebtoken';
+import omit from 'lodash/omit';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 // eslint-disable-next-line consistent-return
@@ -72,6 +73,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       sameSite: process.env.NODE_ENV === 'production' ? 'strict' : 'lax',
     }),
   );
-  const response = makeApiResponse(user, []);
+  const response = makeApiResponse(omit(user, 'password'), []);
   res.status(200).json(response);
 };
