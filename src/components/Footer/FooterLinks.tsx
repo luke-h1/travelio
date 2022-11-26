@@ -5,12 +5,12 @@ const links: { id: number; name: string; slug: string }[] = [
   {
     id: 1,
     name: 'Home',
-    slug: '/home',
+    slug: '/',
   },
   {
     id: 2,
     name: 'Profile',
-    slug: '/',
+    slug: '/profile',
   },
   {
     id: 3,
