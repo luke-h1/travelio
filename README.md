@@ -30,14 +30,14 @@ This project is a travel journal. It is a Next.js website that allows users to c
 -  ✅ Deploy CI / CD
 -  ✅ Custom domain
 
+-  ❌ Create, read, update and delete hols
+-  ❌ hol state management
+
 -  ❌ User profiles
 -  ❌ User settings
 
--  ❌ Add a map to the holiday pages with geojson data
--  ❌ Create, update and delete hols
--  ❌ View hols on a timeline
--  ❌ hol state management
 -  ❌ hol search
+-  ❌ View hols on a timeline
 -  ❌ hol filters
 -  ❌ hol sorting
 -  ❌ hol pagination
