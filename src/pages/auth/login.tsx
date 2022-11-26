@@ -31,7 +31,7 @@ const LoginPage = () => {
             if (res.errors && res.errors.length > 0) {
               setErrors(toErrorMap(res.errors));
             } else {
-              router.push('/home');
+              router.push('/holidays');
             }
           } catch (e) {
             // eslint-disable-next-line no-console
