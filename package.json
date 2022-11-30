@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@fontsource/poppins": "^4.5.10",
-    "@prisma/client": "^4.6.1",
+    "@prisma/client": "^4.7.0",
     "@vercel/analytics": "^0.1.5",
     "axios": "^1.2.0",
     "bcrypt": "^5.1.0",
