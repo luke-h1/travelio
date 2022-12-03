@@ -3,14 +3,17 @@ import {
   CreateHolidayInput,
   createHolidaySchema,
 } from '@frontend/schemas/holiday.schema';
-import { createHoliday } from '@frontend/utils/mutations';
+import uploadImage from '@frontend/utils/cloudinary';
+import { createHoliday, createImageSignature } from '@frontend/utils/mutations';
 import toErrorMap from '@frontend/utils/toErrorMap';
 import { toFormikValidationSchema } from '@frontend/utils/toFormikValidationSchema';
 import { Form, Formik } from 'formik';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import styles from './HolidayForm.module.scss';
 
 const CreateNewHolidayPage = () => {
+  const [previewImage, setPreviewImage] = useState<string>('');
   const router = useRouter();
   return (
     <div className={styles.holidayForm}>
@@ -22,9 +25,9 @@ const CreateNewHolidayPage = () => {
           startDate: '',
           endDate: '',
           city: '',
+          image: '',
           country: '',
           favourite: false,
-          image: '',
           latitude: 0,
           longitude: 0,
           notes: '',
@@ -34,12 +37,24 @@ const CreateNewHolidayPage = () => {
         onSubmit={async (values, { setErrors }) => {
           // eslint-disable-next-line no-console
           console.log(values);
-          const res = await createHoliday({ ...values });
+          const { timestamp, signature } = await createImageSignature();
+          if (timestamp && signature) {
+            const imageData = await uploadImage(
+              values.image as unknown as File,
+              signature,
+              parseInt(timestamp, 10),
+            );
 
-          if (res.errors && res.errors.length > 0) {
-            setErrors(toErrorMap(res.errors));
-          } else {
-            router.push(`/holidays/${res?.data?.id}`);
+            const res = await createHoliday({
+              ...values,
+              image: imageData.secure_url,
+            });
+
+            if (res.errors && res.errors.length > 0) {
+              setErrors(toErrorMap(res.errors));
+            } else {
+              router.push(`/holidays/${res?.data?.id}`);
+            }
           }
         }}
       >
@@ -94,15 +109,30 @@ const CreateNewHolidayPage = () => {
               }}
             />
 
-            <InputField
+            <input
               name="image"
-              label="Image"
-              type="text"
-              placeholder="image"
-              onChange={e => {
-                setFieldValue('image', e.target.value);
+              // label="Image"
+              type="file"
+              placeholder="Image"
+              accept="image/*"
+              onChange={({ target: { validity, files } }) => {
+                if (validity.valid && files) {
+                  const file = files[0];
+                  const reader = new FileReader();
+                  reader.onloadend = () => {
+                    setFieldValue('image', reader.result);
+                    setPreviewImage(reader.result as string);
+                  };
+                  reader.readAsDataURL(file);
+                }
               }}
             />
+            {previewImage && (
+              <div className="max-w-sm">
+                <img src={previewImage} alt="some text" width="100%" />
+              </div>
+            )}
+
             <InputField name="latitude" label="Latitude" type="number" />
             <InputField name="longitude" label="Longitude" type="number" />
             <InputField name="notes" label="Notes" type="textarea" />
