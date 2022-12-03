@@ -28,16 +28,15 @@ const RegisterPage = () => {
           passwordConfirmation: '',
         }}
         onSubmit={async (values, { setErrors }) => {
-          // eslint-disable-next-line no-console
-
           const res = await auth('register', {
             ...values,
           });
+
           if (res.errors && res.errors.length > 0) {
             setErrors(toErrorMap(res.errors));
-          } else {
-            router.push('/');
           }
+
+          router.push('/auth/login');
         }}
       >
         {({ isSubmitting }) => (

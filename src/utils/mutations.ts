@@ -1,3 +1,4 @@
+import { RegisterInput } from '@frontend/schemas/auth.schema';
 import {
   CreateHolidayInput,
   UpdateHolidayInput,
@@ -8,13 +9,10 @@ import { Holiday, User } from '@prisma/client';
 import fetcher from './fetcher';
 
 export const auth = (
-  mode: 'login' | 'register',
-  body: {
-    email: string;
-    password: string;
-  },
+  mode: 'register',
+  body: RegisterInput,
 ): Promise<ApiResponse<User>> => {
-  return fetcher(`/${mode}`, 'POST', body);
+  return fetcher(`/auth/signup`, 'POST', body);
 };
 
 export const getOneHoliday = (

@@ -11,16 +11,22 @@ datasource db {
 }
 
 model User {
-  id        String    @id @default(cuid())
-  firstName String
-  lastName  String
-  email     String    @unique
-  password  String
-  role      Role      @default(USER)
-  holidays  Holiday[]
-  bio       String?
-  createdAt DateTime  @default(now()) @db.Timestamptz(6)
-  updatedAt DateTime  @default(now()) @updatedAt @db.Timestamptz(6)
+  id            String    @id @default(cuid())
+  name          String? // By nextAuth
+  firstName     String
+  lastName      String
+  username      String
+  emailVerified DateTime? // By nextAuth
+  image         String? // By nextAuth
+  email         String    @unique
+  password      String
+  role          Role      @default(USER)
+  holidays      Holiday[]
+  bio           String?
+  accounts      Account[]
+  sessions      Session[]
+  createdAt     DateTime  @default(now()) @db.Timestamptz(6)
+  updatedAt     DateTime  @default(now()) @updatedAt @db.Timestamptz(6)
 
   @@map("users")
 }
@@ -42,6 +48,43 @@ model Holiday {
   updatedAt DateTime @default(now()) @updatedAt @db.Timestamptz(6)
 
   @@map("holidays")
+}
+
+model Account {
+  id                 String  @id @default(cuid())
+  userId             String
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?
+  access_token       String?
+  expires_at         Int?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+  oauth_token_secret String?
+  oauth_token        String?
+
+  user User @relation(fields: [userId], references: [id])
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id])
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
 }
 
 enum Role {
