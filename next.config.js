@@ -6,7 +6,10 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    remotePatterns: [{ hostname: 'localhost' }],
+    remotePatterns: [
+      { hostname: 'localhost' },
+      { hostname: 'res.cloudinary.com', protocol: 'https' },
+    ],
     formats: ['image/avif', 'image/webp'],
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars

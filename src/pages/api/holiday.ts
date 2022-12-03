@@ -6,6 +6,7 @@ import { User } from '@prisma/client';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default validateRoute(
+  // eslint-disable-next-line consistent-return
   async (req: NextApiRequest, res: NextApiResponse, user) => {
     switch (req.method) {
       case 'POST':

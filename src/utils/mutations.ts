@@ -17,6 +17,12 @@ export const auth = (
   return fetcher(`/${mode}`, 'POST', body);
 };
 
+export const getOneHoliday = (
+  id: string,
+): Promise<ApiResponse<Holiday & { user: User }>> => {
+  return fetcher('/holiday', 'GET', { getOne: true, id });
+};
+
 export const createHoliday = (
   body: CreateHolidayInput,
 ): Promise<ApiResponse<Holiday>> => {
