@@ -10,7 +10,7 @@ const payload = {
   endDate: z.string({
     required_error: 'End date is required',
   }),
-  favorite: z.boolean({}).optional(),
+  favourite: z.boolean({}).optional(),
   tags: z.array(z.string()).optional(),
   country: z.string({
     required_error: 'Country is required',

@@ -4,6 +4,7 @@ import { validateToken } from '@frontend/utils/auth';
 import prisma from '@frontend/utils/prisma';
 import { Holiday } from '@prisma/client';
 import type { GetServerSideProps, NextPage } from 'next';
+import Link from 'next/link';
 
 interface Props {
   holidays?: Holiday[];
@@ -17,7 +18,8 @@ const Home: NextPage<Props> = ({ holidays }) => {
         holidays.map(hol => <HolidayCard holiday={hol} key={hol.id} />)
       ) : (
         <div>
-          <h2>No holidays. Go take some!</h2>
+          <h2>No holidays. Go create or take some!</h2>
+          <Link href="/holidays/new">Create new holiday</Link>
         </div>
       )}
     </Page>

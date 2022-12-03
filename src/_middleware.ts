@@ -19,7 +19,6 @@ export default function middleware(req: NextRequest) {
     const token = req.cookies.get(siteConfig.ACCESS_TOKEN);
 
     if (!token) {
-      // return NextResponse.redirect('/signin');
       // direct to the auth login page
       return NextResponse.redirect('/auth/login');
     }
