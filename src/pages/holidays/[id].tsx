@@ -69,6 +69,7 @@ const HolidayPage: NextPage<Props> = ({ holiday }) => {
             <button
               type="button"
               className="btn btn-primary"
+              // eslint-disable-next-line no-console
               onClick={() => console.log('delete')}
             >
               Delete
