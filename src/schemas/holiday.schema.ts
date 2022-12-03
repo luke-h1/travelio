@@ -20,8 +20,6 @@ const payload = {
   }),
   image: z.string().optional(),
   notes: z.string().optional(),
-  latitude: z.number().optional(),
-  longitude: z.number().optional(),
   rating: z.number().optional(),
 };
 

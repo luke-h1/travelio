@@ -1,4 +1,5 @@
 import InputField from '@frontend/components/InputField/InputField';
+import withAuth from '@frontend/hocs/withAuth';
 import {
   CreateHolidayInput,
   createHolidaySchema,
@@ -28,8 +29,6 @@ const CreateNewHolidayPage = () => {
           image: '',
           country: '',
           favourite: false,
-          latitude: 0,
-          longitude: 0,
           notes: '',
           rating: 0,
           tags: [],
@@ -133,8 +132,6 @@ const CreateNewHolidayPage = () => {
               </div>
             )}
 
-            <InputField name="latitude" label="Latitude" type="number" />
-            <InputField name="longitude" label="Longitude" type="number" />
             <InputField name="notes" label="Notes" type="textarea" />
             <InputField name="rating" label="Rating" type="number" />
             <input type="submit" disabled={isSubmitting} />
@@ -144,4 +141,4 @@ const CreateNewHolidayPage = () => {
     </div>
   );
 };
-export default CreateNewHolidayPage;
+export default withAuth(CreateNewHolidayPage);
