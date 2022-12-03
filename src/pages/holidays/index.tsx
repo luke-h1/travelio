@@ -1,5 +1,7 @@
 import HolidayCard from '@frontend/components/HolidayCard/HolidayCard';
 import Page from '@frontend/components/Page/Page';
+import withAuth from '@frontend/hocs/withAuth';
+import { useMounted } from '@frontend/hooks/useMounted';
 import { validateToken } from '@frontend/utils/auth';
 import prisma from '@frontend/utils/prisma';
 import { Holiday } from '@prisma/client';
@@ -11,7 +13,9 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ holidays }) => {
-  return (
+  const { isMounted } = useMounted();
+
+  return isMounted ? (
     <Page>
       <h1>Home</h1>
       {holidays && holidays.length > 0 ? (
@@ -23,10 +27,10 @@ const Home: NextPage<Props> = ({ holidays }) => {
         </div>
       )}
     </Page>
-  );
+  ) : null;
 };
 
-export default Home;
+export default withAuth(Home);
 
 export const getServerSideProps: GetServerSideProps<Props> = async ctx => {
   let user;
