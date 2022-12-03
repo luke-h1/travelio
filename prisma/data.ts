@@ -1,12 +1,16 @@
 import { Holiday, User } from '@prisma/client';
+import bcrypt from 'bcrypt';
+
+const salt = await bcrypt.genSalt(10);
+const password = await bcrypt.hash('password', salt);
 
 export const users: Omit<User, 'id' | 'createdAt' | 'updatedAt'>[] = [
   {
-    firstName: 'John',
-    lastName: 'Doe',
+    firstName: 'test',
+    lastName: 'test',
     email: `test@test.com`,
     bio: 'I am a test user',
-    password: 'test',
+    password,
     role: 'USER',
   },
 ];
@@ -31,7 +35,8 @@ export const holidays: Omit<
   },
   {
     title: 'London',
-    notes: 'London is the capital and largest city of England and the United Kingdom.',
+    notes:
+      'London is the capital and largest city of England and the United Kingdom.',
     startDate: '2022-09-09',
     endDate: '2022-09-16',
     tags: ['England', 'Europe'],
@@ -53,13 +58,14 @@ export const holidays: Omit<
     country: 'USA',
     rating: 5,
     latitude: 40.7128,
-    longitude: 74.0060,
+    longitude: 74.006,
     image: 'https://source.unsplash.com/1600x900/?newyork',
     favourite: false,
   },
   {
     title: 'Tokyo',
-    notes: 'Tokyo is the capital of Japan, the center of the Greater Tokyo Area, and the most populous metropolitan area in the world.',
+    notes:
+      'Tokyo is the capital of Japan, the center of the Greater Tokyo Area, and the most populous metropolitan area in the world.',
     startDate: '2022-09-09',
     endDate: '2022-09-16',
     tags: ['Japan', 'Asia'],
@@ -73,7 +79,8 @@ export const holidays: Omit<
   },
   {
     title: 'Sydney',
-    notes: 'Sydney is the state capital of New South Wales and the most populous city in Australia and Oceania.',
+    notes:
+      'Sydney is the state capital of New South Wales and the most populous city in Australia and Oceania.',
     startDate: '2022-09-09',
     endDate: '2022-09-16',
     tags: ['Australia', 'Oceania'],
@@ -101,7 +108,8 @@ export const holidays: Omit<
   },
   {
     title: 'Rio de Janeiro',
-    notes: 'Rio de Janeiro, or simply Rio, is the second-most populous municipality in Brazil and the sixth-most populous in the Americas.',
+    notes:
+      'Rio de Janeiro, or simply Rio, is the second-most populous municipality in Brazil and the sixth-most populous in the Americas.',
     startDate: '2022-09-09',
     endDate: '2022-09-16',
     tags: ['Brazil', 'South America'],
