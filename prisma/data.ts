@@ -29,7 +29,6 @@ export const holidays: Omit<
     country: 'France',
     rating: 5,
     image: 'https://source.unsplash.com/1600x900/?paris',
-    favourite: false,
   },
   {
     title: 'London',
@@ -42,7 +41,6 @@ export const holidays: Omit<
     country: 'England',
     rating: 5,
     image: 'https://source.unsplash.com/1600x900/?london',
-    favourite: false,
   },
   {
     title: 'New York',
@@ -54,7 +52,6 @@ export const holidays: Omit<
     country: 'USA',
     rating: 5,
     image: 'https://source.unsplash.com/1600x900/?newyork',
-    favourite: false,
   },
   {
     title: 'Tokyo',
@@ -67,7 +64,6 @@ export const holidays: Omit<
     country: 'Japan',
     rating: 5,
     image: 'https://source.unsplash.com/1600x900/?tokyo',
-    favourite: false,
   },
   {
     title: 'Sydney',
@@ -80,7 +76,6 @@ export const holidays: Omit<
     country: 'Australia',
     rating: 5,
     image: 'https://source.unsplash.com/1600x900/?sydney',
-    favourite: false,
   },
   {
     title: 'Cape Town',
@@ -92,7 +87,6 @@ export const holidays: Omit<
     country: 'South Africa',
     rating: 5,
     image: 'https://source.unsplash.com/1600x900/?capetown',
-    favourite: false,
   },
   {
     title: 'Rio de Janeiro',
@@ -105,6 +99,5 @@ export const holidays: Omit<
     country: 'Brazil',
     rating: 5,
     image: 'https://source.unsplash.com/1600x900/?riodejaneiro',
-    favourite: false,
   },
 ];

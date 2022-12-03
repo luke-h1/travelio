@@ -31,7 +31,6 @@ model Holiday {
   notes     String?
   startDate String
   endDate   String
-  favourite Boolean  @default(false)
   tags      String[]
   country   String
   city      String
