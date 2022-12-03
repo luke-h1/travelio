@@ -1,12 +1,12 @@
 import Page from '@frontend/components/Page/Page';
-import { useMe } from '@frontend/hooks/useMe';
+import { useSession } from 'next-auth/react';
 
 const ProfilePage = () => {
-  const { user } = useMe();
+  const { data } = useSession();
   return (
     <Page>
       <h1>Profile</h1>
-      <p>{user?.email}</p>
+      <p>{data?.user?.email}</p>
     </Page>
   );
 };

@@ -1,13 +1,15 @@
-export default function fetcher<T>(
+export default function fetcher<T = Response>(
   endpoint: string,
   method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
   data?: unknown,
+  headers?: HeadersInit,
 ) {
   return fetch(`${window.location.origin}/api${endpoint}`, {
     method,
-    credentials: 'include',
+    // credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
+      ...headers,
     },
     body: data ? JSON.stringify(data) : undefined,
   }).then(res => {

@@ -1,10 +1,10 @@
 import Page from '@frontend/components/Page/Page';
-import { useMe } from '@frontend/hooks/useMe';
 import prisma from '@frontend/utils/prisma';
 import { Holiday, User } from '@prisma/client';
 import classNames from 'classnames';
 import { format, parseISO } from 'date-fns';
 import { GetServerSideProps, NextPage } from 'next';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import styles from './HolidaySlugPage.module.scss';
@@ -25,7 +25,7 @@ interface Props {
 }
 
 const HolidayPage: NextPage<Props> = ({ holiday }) => {
-  const { user } = useMe();
+  const session = useSession();
   return (
     <Page>
       <article className={styles.holidayCard}>
@@ -48,7 +48,9 @@ const HolidayPage: NextPage<Props> = ({ holiday }) => {
           </p>
           <p>
             Added by{' '}
-            {holiday.userId === user?.id ? 'you' : holiday.user.firstName}
+            {holiday.userId === session?.data?.user?.id
+              ? 'you'
+              : holiday.user.firstName}
           </p>
           <p>
             {`${format(parseISO(holiday.startDate), 'MMMM d, yyyy')} - ${format(
@@ -56,10 +58,20 @@ const HolidayPage: NextPage<Props> = ({ holiday }) => {
               'MMMM d, yyyy',
             )}`}
           </p>
+          <div className={styles.cardLocation}>
+            <a
+              target="_blank"
+              rel="noreferrer noopener"
+              className={styles.cardLocationUrl}
+              href={`https://www.google.com/maps/place/${holiday.city}+${holiday.country}`}
+            >
+              View on google maps
+            </a>
+          </div>
         </section>
         {holiday.notes && <p>{holiday.notes}</p>}
 
-        {holiday.userId === user?.id && (
+        {holiday.userId === session?.data?.user?.id && (
           <section className={classNames('df', styles.btnGroup)}>
             <Link href={`/holidays/${holiday.id}/edit`}>
               <button type="button" className="btn btn-secondary">

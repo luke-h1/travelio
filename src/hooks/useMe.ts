@@ -1,13 +1,16 @@
-import fetcher from '@frontend/utils/fetcher';
+import prisma from '@frontend/utils/prisma';
 import { User } from '@prisma/client';
-import useSWR from 'swr';
+import { useSession } from 'next-auth/react';
 
-export const useMe = () => {
-  const { data, error } = useSWR<User, unknown>('/me', fetcher);
+const useMe = async () => {
+  const { data } = await useSession();
 
-  return {
-    user: data,
-    isLoading: !error && !data,
-    isError: error,
-  };
+  const user = await prisma.user.findFirst({
+    where: {
+      id: data?.user?.id,
+    },
+  });
+
+  return user as User;
 };
+export default useMe;

@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import InputField from '@frontend/components/InputField/InputField';
 import Page from '@frontend/components/Page/Page';
-import withAuth from '@frontend/hocs/withAuth';
 import {
   CreateHolidayInput,
   createHolidaySchema,
@@ -38,8 +37,6 @@ const CreateNewHolidayPage = () => {
             tags: [],
           }}
           onSubmit={async (values, { setErrors }) => {
-            // eslint-disable-next-line no-console
-            console.log(values);
             const { timestamp, signature } = await createImageSignature();
             if (timestamp && signature) {
               const imageData = await uploadImage(
@@ -184,4 +181,4 @@ const CreateNewHolidayPage = () => {
     </Page>
   );
 };
-export default withAuth(CreateNewHolidayPage);
+export default CreateNewHolidayPage;

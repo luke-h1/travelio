@@ -1,16 +1,14 @@
 import { LoginInput, loginSchema } from '@frontend/schemas/auth.schema';
-import { auth } from '@frontend/utils/mutations';
-import toErrorMap from '@frontend/utils/toErrorMap';
 import { toFormikValidationSchema } from '@frontend/utils/toFormikValidationSchema';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import InputField from '../../components/InputField/InputField';
 import styles from './Login.module.scss';
 
 const LoginPage = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
 
   return (
@@ -23,19 +21,16 @@ const LoginPage = () => {
           password: '',
         }}
         onSubmit={async (values, { setErrors }) => {
-          try {
-            const res = await auth('login', {
-              ...values,
+          const res = await signIn('credentials', {
+            ...values,
+            redirect: false,
+          });
+          if (res?.error && !res.ok) {
+            setErrors({
+              email: res.error,
             });
-
-            if (res.errors && res.errors.length > 0) {
-              setErrors(toErrorMap(res.errors));
-            } else {
-              router.push('/holidays');
-            }
-          } catch (e) {
-            // eslint-disable-next-line no-console
-            console.error(e);
+          } else {
+            router.push('/');
           }
         }}
       >

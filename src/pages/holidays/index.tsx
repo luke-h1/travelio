@@ -1,11 +1,10 @@
 import HolidayCard from '@frontend/components/HolidayCard/HolidayCard';
 import Page from '@frontend/components/Page/Page';
-import withAuth from '@frontend/hocs/withAuth';
 import { useMounted } from '@frontend/hooks/useMounted';
-import { validateToken } from '@frontend/utils/auth';
 import prisma from '@frontend/utils/prisma';
 import { Holiday } from '@prisma/client';
 import type { GetServerSideProps, NextPage } from 'next';
+import { getSession } from 'next-auth/react';
 import Link from 'next/link';
 
 interface Props {
@@ -30,26 +29,15 @@ const Home: NextPage<Props> = ({ holidays }) => {
   ) : null;
 };
 
-export default withAuth(Home);
+export default Home;
 
-export const getServerSideProps: GetServerSideProps<Props> = async ctx => {
-  let user;
-
-  try {
-    user = validateToken(ctx.req.cookies.TRAVELIO_ACCESS_TOKEN as string);
-  } catch (e) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/auth/login',
-      },
-    };
-  }
-
+export const getServerSideProps: GetServerSideProps<Props> = async () => {
+  const session = await getSession();
   const holidays = await prisma.holiday.findMany({
     where: {
-      userId: user.id,
+      userId: session?.user?.id,
     },
+    take: 100,
     orderBy: {
       startDate: 'asc',
     },
