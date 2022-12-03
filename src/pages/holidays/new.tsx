@@ -170,7 +170,13 @@ const CreateNewHolidayPage = () => {
               <InputField name="notes" label="Notes" type="textarea" />
               {/* <InputField name="rating" label="Rating" type="number" /> */}
 
-              <input type="submit" disabled={isSubmitting} />
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn btn-primary"
+              >
+                Submit
+              </button>
             </Form>
           )}
         </Formik>
