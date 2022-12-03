@@ -5,9 +5,7 @@ import styles from './InputField.module.scss';
 
 type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
-  infoLabel?: string;
   className?: string;
-  placeholder?: string;
   type: string;
   name: string;
 };

@@ -1,0 +1,16 @@
+@import '../../styles/variables.scss';
+@import '../../styles/_partials/mixins';
+
+.formError {
+  p {
+    color: $redviolet;
+  }
+
+  & > input:not([type='file']) {
+    @include error-border;
+  }
+
+  &Label {
+    @include error-text;
+  }
+}

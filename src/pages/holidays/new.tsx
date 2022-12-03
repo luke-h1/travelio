@@ -1,5 +1,6 @@
 import InputField from '@frontend/components/InputField/InputField';
 import Page from '@frontend/components/Page/Page';
+import SelectField from '@frontend/components/SelectField/SelectField';
 import withAuth from '@frontend/hocs/withAuth';
 import {
   CreateHolidayInput,
@@ -17,6 +18,7 @@ import styles from './HolidayForm.module.scss';
 const CreateNewHolidayPage = () => {
   const [previewImage, setPreviewImage] = useState<string>('');
   const router = useRouter();
+
   return (
     <Page>
       <div>
@@ -92,6 +94,20 @@ const CreateNewHolidayPage = () => {
                 type="text"
                 placeholder="United States"
               />
+
+              <SelectField<{ value: number; label: string }>
+                label="Rating"
+                name="rating"
+                type="select"
+                onChange={e => setFieldValue('rating', e?.target.value)}
+                options={[
+                  { value: 1, label: '1' },
+                  { value: 2, label: '2' },
+                  { value: 3, label: '3' },
+                  { value: 4, label: '4' },
+                  { value: 5, label: '5' },
+                ]}
+              />
               <InputField
                 name="tags"
                 label="Tags"
@@ -101,25 +117,33 @@ const CreateNewHolidayPage = () => {
                   setFieldValue('tags', e.target.value.split(','));
                 }}
               />
+              <label htmlFor="image">
+                <p
+                  className="df df-jc-sb df-ai-c"
+                  style={{ marginTop: '1rem' }}
+                >
+                  Image
+                </p>
+                <input
+                  name="image"
+                  type="file"
+                  className={styles.imageInput}
+                  placeholder="Image"
+                  accept="image/*"
+                  onChange={({ target: { validity, files } }) => {
+                    if (validity.valid && files) {
+                      const file = files[0];
+                      const reader = new FileReader();
+                      reader.onloadend = () => {
+                        setFieldValue('image', reader.result);
+                        setPreviewImage(reader.result as string);
+                      };
+                      reader.readAsDataURL(file);
+                    }
+                  }}
+                />{' '}
+              </label>
 
-              <input
-                name="image"
-                // label="Image"
-                type="file"
-                placeholder="Image"
-                accept="image/*"
-                onChange={({ target: { validity, files } }) => {
-                  if (validity.valid && files) {
-                    const file = files[0];
-                    const reader = new FileReader();
-                    reader.onloadend = () => {
-                      setFieldValue('image', reader.result);
-                      setPreviewImage(reader.result as string);
-                    };
-                    reader.readAsDataURL(file);
-                  }
-                }}
-              />
               {previewImage && (
                 <div className="max-w-sm">
                   <img src={previewImage} alt="some text" width="100%" />
@@ -127,7 +151,8 @@ const CreateNewHolidayPage = () => {
               )}
 
               <InputField name="notes" label="Notes" type="textarea" />
-              <InputField name="rating" label="Rating" type="number" />
+              {/* <InputField name="rating" label="Rating" type="number" /> */}
+
               <input type="submit" disabled={isSubmitting} />
             </Form>
           )}
