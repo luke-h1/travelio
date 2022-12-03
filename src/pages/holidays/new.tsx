@@ -1,6 +1,6 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import InputField from '@frontend/components/InputField/InputField';
 import Page from '@frontend/components/Page/Page';
-import SelectField from '@frontend/components/SelectField/SelectField';
 import withAuth from '@frontend/hocs/withAuth';
 import {
   CreateHolidayInput,
@@ -10,9 +10,11 @@ import uploadImage from '@frontend/utils/cloudinary';
 import { createHoliday, createImageSignature } from '@frontend/utils/mutations';
 import toErrorMap from '@frontend/utils/toErrorMap';
 import { toFormikValidationSchema } from '@frontend/utils/toFormikValidationSchema';
+import classNames from 'classnames';
 import { Form, Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Select from 'react-select';
 import styles from './HolidayForm.module.scss';
 
 const CreateNewHolidayPage = () => {
@@ -59,7 +61,7 @@ const CreateNewHolidayPage = () => {
             }
           }}
         >
-          {({ isSubmitting, setFieldValue }) => (
+          {({ isSubmitting, setFieldValue, errors }) => (
             <Form>
               <InputField
                 name="title"
@@ -95,19 +97,34 @@ const CreateNewHolidayPage = () => {
                 placeholder="United States"
               />
 
-              <SelectField<{ value: number; label: string }>
-                label="Rating"
-                name="rating"
-                type="select"
-                onChange={e => setFieldValue('rating', e?.target.value)}
-                options={[
-                  { value: 1, label: '1' },
-                  { value: 2, label: '2' },
-                  { value: 3, label: '3' },
-                  { value: 4, label: '4' },
-                  { value: 5, label: '5' },
-                ]}
-              />
+              <div aria-live="polite">
+                <label
+                  htmlFor="rating"
+                  className={classNames('holidayRating', {
+                    [styles.formError]: errors.rating,
+                  })}
+                >
+                  <p
+                    className="df df-jc-sb df-ai-c"
+                    style={{ marginTop: '1rem' }}
+                  >
+                    Rating
+                  </p>
+                  <Select
+                    id="rating"
+                    options={[
+                      { value: 0, label: '0' },
+                      { value: 1, label: '1' },
+                      { value: 2, label: '2' },
+                      { value: 3, label: '3' },
+                      { value: 4, label: '4' },
+                      { value: 5, label: '5' },
+                    ]}
+                    defaultValue={null}
+                    onChange={e => setFieldValue('rating', e?.value)}
+                  />
+                </label>
+              </div>
               <InputField
                 name="tags"
                 label="Tags"

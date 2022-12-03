@@ -1,6 +1,6 @@
 @import './variables.scss';
-@import './_partials/mixins';
-
+@import './_partials/mixins.scss';
+@import './_partials/utils.scss';
 html,
 body {
   padding: 0;
@@ -168,5 +168,53 @@ textarea {
     &:disabled {
       color: lighten($darkumber, 15%);
     }
+  }
+}
+
+.holidayRating {
+  margin-bottom: 2rem;
+  p {
+    margin-bottom: 0.75rem;
+    color: darken($shadow, 20%);
+  }
+  input:not([type='file']) {
+    height: 2.5em;
+  }
+
+  input:not([type='file']),
+  textarea {
+    width: 100%;
+    border: 1px solid darken($bone, 8%);
+  }
+}
+
+.formError {
+  p {
+    color: $redviolet;
+  }
+
+  & > input:not([type='file']) {
+    @include error-border;
+  }
+
+  &Label {
+    @include error-text;
+  }
+}
+
+.input {
+  margin-bottom: 2rem;
+  p {
+    margin-bottom: 0.75rem;
+    color: darken($shadow, 20%);
+  }
+  input:not([type='file']) {
+    height: 2.5em;
+  }
+
+  input:not([type='file']),
+  textarea {
+    width: 100%;
+    border: 1px solid darken($bone, 8%);
   }
 }
