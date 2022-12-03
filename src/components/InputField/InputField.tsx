@@ -7,7 +7,7 @@ type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   label: string;
   infoLabel?: string;
   className?: string;
-  placeholder: string;
+  placeholder?: string;
   type: string;
   name: string;
 };
@@ -23,7 +23,7 @@ const InputField = ({ className, ...props }: InputFieldProps) => {
         })}
       >
         <p className="df df-jc-sb df-ai-c" style={{ marginTop: '1rem' }}>
-          {/* {label} */}
+          {props.label}
         </p>
         <input {...field} {...props} id={field.name} />
         {error && (
