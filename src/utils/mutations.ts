@@ -34,3 +34,10 @@ export const deleteHoliday = (
 ): Promise<ApiResponse<Holiday>> => {
   return fetcher(`/holiday/${body.id}`, 'DELETE', body);
 };
+
+export const createImageSignature = (): Promise<{
+  timestamp: string;
+  signature: string;
+}> => {
+  return fetcher(`/image`, 'POST', {});
+};

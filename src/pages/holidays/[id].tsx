@@ -8,6 +8,7 @@ interface Props {
 }
 
 const HolidayPage: NextPage<Props> = ({ holiday }) => {
+  console.log(holiday);
   return (
     <Page>
       <h1>Holiday {holiday?.id}</h1>
