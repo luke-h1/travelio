@@ -32,15 +32,10 @@ This project is a travel journal. It is a Next.js website that allows users to c
 
 -  ✅ Create, read, update and delete hols
 
--  ❌ User profiles
-
 -  ❌ hol search
 -  ❌ View hols on a timeline
--  ❌ hol filters
 -  ❌ hol sorting
--  ❌ hol pagination
 
--  ❌ Admin utils
 -  ✅ Set different cookie for preview & production deploys
 
 ### Development
