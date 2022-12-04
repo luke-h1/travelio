@@ -3,7 +3,9 @@ import { useField } from 'formik';
 import { InputHTMLAttributes } from 'react';
 import styles from './InputField.module.scss';
 
-type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
+type InputFieldProps = InputHTMLAttributes<
+  HTMLInputElement | HTMLTextAreaElement
+> & {
   label: string;
   className?: string;
   type: string;
@@ -23,7 +25,12 @@ const InputField = ({ className, ...props }: InputFieldProps) => {
         <p className="df df-jc-sb df-ai-c" style={{ marginTop: '1rem' }}>
           {props.label}
         </p>
-        <input {...field} {...props} id={field.name} />
+
+        {props.type === 'textarea' ? (
+          <textarea {...field} {...props} id={field.name} rows={5} cols={50} />
+        ) : (
+          <input {...field} {...props} id={field.name} />
+        )}
         {error && (
           <p className={error ? styles.formErrorLabel : 'hidden'}>{error}</p>
         )}
