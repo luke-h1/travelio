@@ -29,7 +29,6 @@ Travel journal / tracker
 -  ✅ Custom domain
 -  ✅ Create, read, update and delete hols
 -  ❌ hol search
--  ❌ hol sorting
 -  ✅ Set different cookie for preview & production deploys
 
 ### Development
