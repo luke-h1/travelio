@@ -30,11 +30,9 @@ This project is a travel journal. It is a Next.js website that allows users to c
 -  ✅ Deploy CI / CD
 -  ✅ Custom domain
 
--  ❌ Create, read, update and delete hols
--  ❌ hol state management
+-  ✅ Create, read, update and delete hols
 
 -  ❌ User profiles
--  ❌ User settings
 
 -  ❌ hol search
 -  ❌ View hols on a timeline
@@ -43,7 +41,7 @@ This project is a travel journal. It is a Next.js website that allows users to c
 -  ❌ hol pagination
 
 -  ❌ Admin utils
--  ❌ Set different cookie for preview & production deploys
+-  ✅ Set different cookie for preview & production deploys
 
 ### Development
 
