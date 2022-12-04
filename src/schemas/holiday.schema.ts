@@ -10,7 +10,6 @@ const payload = {
   endDate: z.string({
     required_error: 'End date is required',
   }),
-  favorite: z.boolean({}).optional(),
   tags: z.array(z.string()).optional(),
   country: z.string({
     required_error: 'Country is required',
@@ -18,10 +17,8 @@ const payload = {
   city: z.string({
     required_error: 'City is required',
   }),
-  image: z.string().optional(),
+  image: z.string(),
   notes: z.string().optional(),
-  latitude: z.number().optional(),
-  longitude: z.number().optional(),
   rating: z.number().optional(),
 };
 

@@ -6,7 +6,11 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   images: {
-    remotePatterns: [{ hostname: 'localhost' }],
+    remotePatterns: [
+      { hostname: 'localhost' },
+      { hostname: 'res.cloudinary.com', protocol: 'https' },
+      { hostname: 'source.unsplash.com', protocol: 'https' },
+    ],
     formats: ['image/avif', 'image/webp'],
   },
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -27,6 +31,9 @@ const nextConfig = {
       use: ['@svgr/webpack'],
     });
     return config;
+  },
+  env: {
+    NEXTAUTH_URL: process.env.NEXTAUTH_URL,
   },
 };
 

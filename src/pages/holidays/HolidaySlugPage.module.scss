@@ -1,0 +1,119 @@
+@import '../../styles/variables.scss';
+
+.holidayCard {
+  width: 100%;
+  margin: 2em auto 0 auto;
+  padding: 1em 2em;
+  background-color: darken($bone, 5%);
+  border-radius: 3px;
+
+  & > *:not(:last-child) {
+    margin-bottom: 1em;
+  }
+
+  @media (min-width: 768px) {
+    width: 70%;
+  }
+
+  .holidayImage {
+    margin: 0 auto;
+    padding-bottom: 1.5em;
+  }
+
+  .holidayHeader {
+    width: 100%;
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0.25em;
+    }
+
+    p {
+      margin-bottom: 0.5em;
+    }
+
+    .date {
+      font-size: 1.125rem;
+      font-weight: 500;
+    }
+  }
+
+  .holidayStats {
+    padding: 1em;
+    background-color: lighten($bone, 5%);
+    border-radius: 3px;
+
+    .stat {
+      &:not(:last-child) {
+        border-right: 1px solid darken($bone, 5%);
+        padding-right: 1.5em;
+        margin-right: 1.5em;
+      }
+
+      &Name {
+        color: darken($shadow, 15%);
+        margin-bottom: 0.5em;
+      }
+
+      &Value {
+        font-weight: 600;
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  .holidayInfo {
+    article:not(:last-child) {
+      margin-bottom: 1em;
+    }
+
+    &Icon {
+      font-size: 1.5rem;
+      margin-right: 0.5em;
+    }
+  }
+
+  .notes,
+  .holidayStats,
+  .holidayInfo {
+    @media (min-width: 768px) {
+      width: 100%;
+    }
+  }
+
+  .btnGroup {
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      justify-content: flex-end;
+    }
+
+    button {
+      flex-grow: 1;
+
+      @media (min-width: 768px) {
+        flex-grow: 0;
+      }
+    }
+
+    & > *:not(:last-child) {
+      margin-right: 1em;
+    }
+  }
+}
+.cardLocationIcon {
+  color: var(--clr-accent);
+}
+
+.cardLocation {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.17em;
+  text-transform: uppercase;
+  margin: 0 1em 0 0.25em;
+  color: var(--clr-text-main);
+}
+
+.cardLocationUrl {
+  color: var(--clr-text-light);
+  font-size: 0.75rem;
+}

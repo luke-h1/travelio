@@ -1,5 +1,5 @@
-import { useMe } from '@frontend/hooks/useMe';
 import classNames from 'classnames';
+import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -7,6 +7,7 @@ import styles from './Header.module.scss';
 
 const authLinks = [
   { name: 'Hols', path: '/holidays' },
+  { name: 'New hol', path: '/holidays/new' },
   { name: 'Profile', path: '/profile' },
 ];
 
@@ -17,8 +18,9 @@ const noAuthLinks = [
 
 const Header = (): JSX.Element => {
   const router = useRouter();
-  const { isLoading, user } = useMe();
   const pathname = router.pathname.split('/[')[0]; // active paths on dynamic subpages
+  const { data, status } = useSession();
+
   return (
     <>
       <header className={styles.header}>
@@ -37,7 +39,7 @@ const Header = (): JSX.Element => {
           </Link>
           <nav className={styles.nav}>
             <ol className={styles.links}>
-              {user && user.id && !isLoading
+              {data?.user && data?.user.id && status === 'authenticated'
                 ? authLinks.map(({ name, path }) => (
                     <li
                       key={path}

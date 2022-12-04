@@ -1,6 +1,6 @@
 @import './variables.scss';
-@import './_partials/mixins';
-
+@import './_partials/mixins.scss';
+@import './_partials/utils.scss';
 html,
 body {
   padding: 0;
@@ -95,51 +95,170 @@ textarea {
   }
 }
 
-input[type='checkbox'] {
-  visibility: hidden;
-}
+.btn {
+  min-width: 4em;
+  padding: 0.5em 1em;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: $darkumber;
+  cursor: pointer;
 
-input[type='checkbox']:checked {
-  visibility: visible;
-}
+  &-primary {
+    background-color: $redviolet;
+    border-color: darken($redviolet, 3%);
+    color: #fff;
 
-/* the slider bar */
-input[type='checkbox'] {
-  width: 45px;
-  height: 15px;
-  background: #555;
-  margin: 20px 80px;
-  position: relative;
-  border-radius: 5px;
-  label {
-    display: block;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    transition: all 0.5s ease;
-    cursor: pointer;
-    position: absolute;
-    top: -2px;
-    left: -3px;
-    background: #ccc;
+    &:hover {
+      background: linear-gradient($redviolet, lighten($redviolet, 3%));
+
+      &:active,
+      &:focus {
+        border-color: darken($redviolet, 5%);
+      }
+    }
+
+    &:disabled {
+      background: rgba($redviolet, 80%);
+      border-color: rgba($redviolet, 80%);
+    }
+  }
+
+  &-secondary {
+    background-color: inherit;
+    border-color: lighten($shadow, 20%);
+
+    &:hover {
+      background: linear-gradient(lighten($bone, 5%), lighten($bone, 3%));
+
+      &:active,
+      &:focus {
+        border-color: $shadow;
+      }
+    }
+
+    &:disabled {
+      color: rgba($darkumber, 80%);
+    }
+  }
+
+  &-icon {
+    min-width: 0;
+    background: none;
+    border: none;
+    padding: 0;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: lighten($darkumber, 10%);
+    }
+  }
+
+  &-text {
+    background-color: inherit;
+    font-size: 0.75rem;
+    font-weight: 400;
+    border: none;
+    padding-left: 0;
+    padding-right: 0;
+
+    &:disabled {
+      color: lighten($darkumber, 15%);
+    }
   }
 }
 
-/* the slider from the label */
-input[type='checkbox'] label {
-  display: block;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  transition: all 0.5s ease;
-  cursor: pointer;
-  position: absolute;
-  top: -2px;
-  left: -3px;
-  background: #ccc;
+.holidayRating {
+  margin-bottom: 2rem;
+  p {
+    margin-bottom: 0.75rem;
+    color: darken($shadow, 20%);
+  }
+  input:not([type='file']) {
+    height: 2.5em;
+  }
+
+  input:not([type='file']),
+  textarea {
+    width: 100%;
+    border: 1px solid darken($bone, 8%);
+  }
 }
 
-/* Move the slider if the checkbox is clicked */
-input[type='checkbox']:checked + label {
-  left: 27px;
+.formError {
+  p {
+    color: $redviolet;
+  }
+
+  & > input:not([type='file']) {
+    @include error-border;
+  }
+
+  &Label {
+    @include error-text;
+  }
+}
+
+.input {
+  margin-bottom: 2rem;
+  p {
+    margin-bottom: 0.75rem;
+    color: darken($shadow, 20%);
+  }
+  input:not([type='file']) {
+    height: 2.5em;
+  }
+
+  input:not([type='file']),
+  textarea {
+    width: 100%;
+    border: 1px solid darken($bone, 8%);
+  }
+}
+
+/* Modern Browsers */
+textarea::placeholder {
+  font-size: 1rem;
+  color: #000;
+}
+
+/* WebKit, Edge */
+textarea::-webkit-input-placeholder {
+  font-size: 1rem;
+  color: #000;
+}
+
+/* Firefox 4-18 */
+textarea:-moz-placeholder {
+  font-size: 1rem;
+  color: #000;
+}
+
+/* Firefox 19+ */
+textarea::-moz-placeholder {
+  font-size: 1rem;
+  color: #000;
+}
+
+/* IE 10-11 */
+textarea:-ms-input-placeholder {
+  font-size: 1rem;
+  color: #000;
+}
+
+/* Edge */
+textarea::-ms-input-placeholder {
+  font-size: 1rem;
+  color: #000;
+}
+
+textarea {
+  font-size: 1rem;
+  // line-height: 1.52em;
+  font-family: 'poppins', sans-serif;
 }

@@ -1,24 +1,18 @@
 /* eslint-disable no-console */
 import { PrismaClient } from '@prisma/client';
-import bcrypt from 'bcrypt';
 import { holidays, users } from './data';
 
 const prisma = new PrismaClient({});
 
 const run = async () => {
-  const salt = await bcrypt.genSalt(10);
-  const password = await bcrypt.hash('password', salt);
-
   await Promise.all(
     users.map(async user => {
       const u = await prisma.user.upsert({
         create: {
           ...user,
-          password,
         },
         update: {
           ...user,
-          password,
         },
         where: {
           email: user.email,

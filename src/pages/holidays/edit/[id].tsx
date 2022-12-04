@@ -7,17 +7,26 @@ import {
 } from '@frontend/schemas/holiday.schema';
 import uploadImage from '@frontend/utils/cloudinary';
 import { createHoliday, createImageSignature } from '@frontend/utils/mutations';
+import prisma from '@frontend/utils/prisma';
 import toErrorMap from '@frontend/utils/toErrorMap';
 import { toFormikValidationSchema } from '@frontend/utils/toFormikValidationSchema';
+import { Holiday } from '@prisma/client';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
+import { GetServerSideProps } from 'next';
+import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Select from 'react-select';
-import styles from './HolidayForm.module.scss';
+import styles from '../HolidayForm.module.scss';
 
-const CreateNewHolidayPage = () => {
-  const [previewImage, setPreviewImage] = useState<string>('');
+interface Props {
+  holiday: Holiday;
+}
+
+const UpdateHolidayPage = ({ holiday }: Props) => {
+  const [previewImage, setPreviewImage] = useState<string>(holiday.image);
+
   const router = useRouter();
 
   return (
@@ -26,15 +35,15 @@ const CreateNewHolidayPage = () => {
         <Formik<CreateHolidayInput>
           validationSchema={toFormikValidationSchema(createHolidaySchema)}
           initialValues={{
-            title: '',
-            startDate: '',
-            endDate: '',
-            city: '',
-            image: '',
-            country: '',
-            notes: '',
-            rating: 0,
-            tags: [],
+            title: holiday.title,
+            startDate: holiday.startDate,
+            endDate: holiday.endDate,
+            city: holiday.city,
+            image: holiday.image,
+            country: holiday.country,
+            notes: holiday.notes ?? '',
+            rating: holiday.rating ?? 0,
+            tags: holiday.tags,
           }}
           onSubmit={async (values, { setErrors }) => {
             const { timestamp, signature } = await createImageSignature();
@@ -165,7 +174,6 @@ const CreateNewHolidayPage = () => {
               )}
 
               <InputField name="notes" label="Notes" type="textarea" />
-              {/* <InputField name="rating" label="Rating" type="number" /> */}
 
               <button
                 type="submit"
@@ -181,4 +189,28 @@ const CreateNewHolidayPage = () => {
     </Page>
   );
 };
-export default CreateNewHolidayPage;
+export default UpdateHolidayPage;
+
+export const getServerSideProps: GetServerSideProps<Props> = async ctx => {
+  const { id } = ctx.query;
+  const session = await getSession();
+
+  const holiday = await prisma.holiday.findFirst({
+    where: {
+      id: id as string,
+      userId: session?.user?.id,
+    },
+  });
+
+  if (!holiday) {
+    return {
+      props: [],
+      notFound: true,
+    };
+  }
+  return {
+    props: {
+      holiday: JSON.parse(JSON.stringify(holiday)),
+    },
+  };
+};
