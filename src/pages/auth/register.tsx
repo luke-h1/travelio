@@ -28,7 +28,7 @@ const RegisterPage = () => {
           passwordConfirmation: '',
         }}
         onSubmit={async (values, { setErrors }) => {
-          const res = await auth('register', {
+          const res = await auth({
             ...values,
           });
 
