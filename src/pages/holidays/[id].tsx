@@ -88,7 +88,7 @@ const HolidayPage: NextPage<Props> = ({ holiday }) => {
               // eslint-disable-next-line no-console
               onClick={async () => {
                 const res = await deleteHoliday(holiday.id);
-                if (!res.errors) {
+                if (res.data === null) {
                   router.push('/holidays');
                 }
               }}
