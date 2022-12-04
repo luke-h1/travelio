@@ -19,6 +19,7 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
 
       res.status(200).json(makeApiResponse(holidays, []));
       break;
+
     case 'POST':
       const hol = await prisma.holiday.create({
         data: {

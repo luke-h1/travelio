@@ -2,23 +2,13 @@ import { RegisterInput } from '@frontend/schemas/auth.schema';
 import {
   CreateHolidayInput,
   UpdateHolidayInput,
-  DeleteHolidayInput,
 } from '@frontend/schemas/holiday.schema';
 import { ApiResponse } from '@frontend/types/util';
 import { Holiday, User } from '@prisma/client';
 import fetcher from './fetcher';
 
-export const auth = (
-  mode: 'register',
-  body: RegisterInput,
-): Promise<ApiResponse<User>> => {
+export const auth = (body: RegisterInput): Promise<ApiResponse<User>> => {
   return fetcher(`/auth/signup`, 'POST', body);
-};
-
-export const getOneHoliday = (
-  id: string,
-): Promise<ApiResponse<Holiday & { user: User }>> => {
-  return fetcher('/holiday', 'GET', { getOne: true, id });
 };
 
 export const createHoliday = (
@@ -33,10 +23,8 @@ export const updateHoliday = (
   return fetcher(`/holiday/${body.id}`, 'PUT', body);
 };
 
-export const deleteHoliday = (
-  body: DeleteHolidayInput,
-): Promise<ApiResponse<Holiday>> => {
-  return fetcher(`/holiday/${body.id}`, 'DELETE', body);
+export const deleteHoliday = (id: string): Promise<ApiResponse<null>> => {
+  return fetcher(`/holiday/delete/${id}`, 'DELETE');
 };
 
 export const createImageSignature = (): Promise<{

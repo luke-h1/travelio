@@ -1,4 +1,5 @@
 import Page from '@frontend/components/Page/Page';
+import { deleteHoliday } from '@frontend/utils/mutations';
 import prisma from '@frontend/utils/prisma';
 import { Holiday, User } from '@prisma/client';
 import classNames from 'classnames';
@@ -7,6 +8,7 @@ import { GetServerSideProps, NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import styles from './HolidaySlugPage.module.scss';
 
 interface Props {
@@ -26,6 +28,8 @@ interface Props {
 
 const HolidayPage: NextPage<Props> = ({ holiday }) => {
   const session = useSession();
+  const router = useRouter();
+
   return (
     <Page>
       <article className={styles.holidayCard}>
@@ -73,7 +77,7 @@ const HolidayPage: NextPage<Props> = ({ holiday }) => {
 
         {holiday.userId === session?.data?.user?.id && (
           <section className={classNames('df', styles.btnGroup)}>
-            <Link href={`/holidays/${holiday.id}/edit`}>
+            <Link href={`/holidays/edit/${holiday.id}`}>
               <button type="button" className="btn btn-secondary">
                 Edit
               </button>
@@ -82,7 +86,12 @@ const HolidayPage: NextPage<Props> = ({ holiday }) => {
               type="button"
               className="btn btn-primary"
               // eslint-disable-next-line no-console
-              onClick={() => console.log('delete')}
+              onClick={async () => {
+                const res = await deleteHoliday(holiday.id);
+                if (!res.errors) {
+                  router.push('/holidays');
+                }
+              }}
             >
               Delete
             </button>
