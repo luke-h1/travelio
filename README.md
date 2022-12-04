@@ -1,4 +1,4 @@
-Travel journal
+## Travel journal built with Next.js, Prisma & Nextauth
 
 ## Getting started
 
