@@ -7,6 +7,7 @@ import styles from './Header.module.scss';
 
 const authLinks = [
   { name: 'Hols', path: '/holidays' },
+  { name: 'New hol', path: '/holidays/new' },
   { name: 'Profile', path: '/profile' },
 ];
 

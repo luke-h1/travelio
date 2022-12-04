@@ -17,9 +17,7 @@ npm ci
 
 ### Overview
 
-This project is a travel journal. It is a Next.js website that allows users to create, read, update and delete holidays. The entries are then stored via prisma and can be viewed on a map.
-
-
+Travel journal / tracker
 
 ### Todo
 
@@ -29,13 +27,9 @@ This project is a travel journal. It is a Next.js website that allows users to c
 -  ✅ Navigation
 -  ✅ Deploy CI / CD
 -  ✅ Custom domain
-
 -  ✅ Create, read, update and delete hols
-
 -  ❌ hol search
--  ❌ View hols on a timeline
 -  ❌ hol sorting
-
 -  ✅ Set different cookie for preview & production deploys
 
 ### Development
@@ -65,10 +59,6 @@ Start the frontend server
 ```
 npm run dev
 ```
-
-### Deployment
-
-TBD. Vercel for frontend, Fly.io or https://render.com for DB probably.
 
 
 ### Build
