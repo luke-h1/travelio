@@ -5,7 +5,7 @@ import { Holiday, User } from '@prisma/client';
 import classNames from 'classnames';
 import { format, parseISO } from 'date-fns';
 import { GetServerSideProps, NextPage } from 'next';
-import { useSession } from 'next-auth/react';
+import { getSession, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -106,9 +106,13 @@ export default HolidayPage;
 
 export const getServerSideProps: GetServerSideProps<Props> = async ctx => {
   const { id } = ctx.query;
-  const holiday = await prisma.holiday.findUnique({
+  const session = await getSession();
+  const holiday = await prisma.holiday.findFirst({
     where: {
       id: id as string,
+      AND: {
+        userId: session?.user?.id,
+      },
     },
     include: {
       user: {
