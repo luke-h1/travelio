@@ -10,7 +10,7 @@ const Page = ({ children }: Props) => {
   return (
     <>
       <Header />
-      <div className="container">
+      <div className="flex flex-col justify-center px-8">
         <main className="main">
           <PageTransition>{children}</PageTransition>
         </main>
