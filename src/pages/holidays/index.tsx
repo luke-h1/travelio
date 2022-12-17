@@ -1,5 +1,5 @@
-import HolidayCard from '@frontend/components/HolidayCard/HolidayCard';
-import Page from '@frontend/components/Page/Page';
+import HolidayCard from '@frontend/components/HolidayCard';
+import Page from '@frontend/components/Page';
 import { useMounted } from '@frontend/hooks/useMounted';
 import prisma from '@frontend/utils/prisma';
 import { Holiday } from '@prisma/client';

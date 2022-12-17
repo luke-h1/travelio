@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import InputField from '@frontend/components/InputField/InputField';
-import Page from '@frontend/components/Page/Page';
+import InputField from '@frontend/components/InputField';
+import Page from '@frontend/components/Page';
 import {
   CreateHolidayInput,
   createHolidaySchema,
@@ -18,7 +18,6 @@ import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Select from 'react-select';
-import styles from '../HolidayForm.module.scss';
 
 interface Props {
   holiday: Holiday;
@@ -67,28 +66,25 @@ const UpdateHolidayPage = ({ holiday }: Props) => {
             }
           }}
         >
-          {({ isSubmitting, setFieldValue, errors }) => (
+          {({ isSubmitting, setFieldValue }) => (
             <Form>
               <InputField
                 name="title"
                 label="Title"
                 type="text"
                 placeholder="Title"
-                className={styles.holidayName}
               />
               <InputField
                 name="startDate"
                 label="Start date"
                 type="date"
                 placeholder="Start date"
-                className={styles.holidayName}
               />
               <InputField
                 name="endDate"
                 label="End date"
                 type="date"
                 placeholder="End date"
-                className={styles.holidayName}
               />
               <InputField
                 name="city"
@@ -106,9 +102,7 @@ const UpdateHolidayPage = ({ holiday }: Props) => {
               <div aria-live="polite">
                 <label
                   htmlFor="rating"
-                  className={classNames('holidayRating', {
-                    [styles.formError]: errors.rating,
-                  })}
+                  className={classNames('holidayRating', {})}
                 >
                   <p
                     className="df df-jc-sb df-ai-c"
@@ -150,7 +144,6 @@ const UpdateHolidayPage = ({ holiday }: Props) => {
                 <input
                   name="image"
                   type="file"
-                  className={styles.imageInput}
                   placeholder="Image"
                   accept="image/*"
                   onChange={({ target: { validity, files } }) => {

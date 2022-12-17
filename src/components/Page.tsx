@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
-import Header from '../Header/Header';
-import PageTransition from '../PageTransition/PageTransition';
-import styles from './Page.module.scss';
+import Header from './Header';
+import PageTransition from './PageTransition';
 
 interface Props {
   children: ReactNode;
@@ -9,9 +8,9 @@ interface Props {
 
 const Page = ({ children }: Props) => {
   return (
-    <div className={styles.container}>
+    <div className="container">
       <Header />
-      <main className={styles.main}>
+      <main className="main">
         <PageTransition>{children}</PageTransition>
       </main>
     </div>

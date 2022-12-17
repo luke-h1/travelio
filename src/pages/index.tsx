@@ -1,13 +1,8 @@
-import Hero from '@frontend/components/Hero/Hero';
-import Page from '@frontend/components/Page/Page';
+import Page from '@frontend/components/Page';
 import type { NextPage } from 'next';
 
 const Home: NextPage = () => {
-  return (
-    <Page>
-      <Hero />
-    </Page>
-  );
+  return <Page>Travelio</Page>;
 };
 
 export default Home;

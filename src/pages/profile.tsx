@@ -1,4 +1,4 @@
-import Page from '@frontend/components/Page/Page';
+import Page from '@frontend/components/Page';
 import prisma from '@frontend/utils/prisma';
 import { User } from '@prisma/client';
 import { GetServerSideProps } from 'next';

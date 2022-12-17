@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import { useField } from 'formik';
 import { InputHTMLAttributes } from 'react';
-import styles from './InputField.module.scss';
 
 type InputFieldProps = InputHTMLAttributes<
   HTMLInputElement | HTMLTextAreaElement
@@ -18,9 +17,14 @@ const InputField = ({ className, ...props }: InputFieldProps) => {
     <div aria-live="polite">
       <label
         htmlFor={field.name}
-        className={classNames(styles.input, className, {
-          [styles.formError]: error,
-        })}
+        className={classNames(
+          'text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-neutral-600 bg-neutral-200 uppercase last:mr-0 mr-1',
+          className,
+          {
+            'text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-red-600 bg-red-200 uppercase last:mr-0 mr-1':
+              error,
+          },
+        )}
       >
         <p className="df df-jc-sb df-ai-c" style={{ marginTop: '1rem' }}>
           {props.label}
@@ -32,7 +36,16 @@ const InputField = ({ className, ...props }: InputFieldProps) => {
           <input {...field} {...props} id={field.name} />
         )}
         {error && (
-          <p className={error ? styles.formErrorLabel : 'hidden'}>{error}</p>
+          <p
+            className={
+              error
+                ? 'text-xs font-semibold inline-block py-1 px-2 uppercase rounded text-red-600 bg-red-200 uppercase last:mr-0 mr-1'
+                : 'hidden'
+            }
+            role="alert"
+          >
+            {error}
+          </p>
         )}
       </label>
     </div>

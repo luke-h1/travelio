@@ -1,15 +1,13 @@
-import Page from '@frontend/components/Page/Page';
+import Page from '@frontend/components/Page';
 import { deleteHoliday } from '@frontend/utils/mutations';
 import prisma from '@frontend/utils/prisma';
 import { Holiday, User } from '@prisma/client';
-import classNames from 'classnames';
 import { format, parseISO } from 'date-fns';
 import { GetServerSideProps, NextPage } from 'next';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import styles from './HolidaySlugPage.module.scss';
 
 interface Props {
   holiday: Holiday & {
@@ -32,22 +30,19 @@ const HolidayPage: NextPage<Props> = ({ holiday }) => {
 
   return (
     <Page>
-      <article className={styles.holidayCard}>
+      <article>
         {holiday.image && (
           <Image
             src={holiday.image}
             blurDataURL={holiday.image}
             width={410}
-            className={styles.holidayImage}
             height={230}
             alt={holiday.title}
           />
         )}
-        <section
-          className={classNames('df df-fc df-ai-c', styles.holidayHeader)}
-        >
+        <section>
           <h2>{holiday?.title}</h2>
-          <p className={styles.date}>
+          <p>
             {holiday.city} / {holiday.country}
           </p>
           <p>
@@ -62,11 +57,10 @@ const HolidayPage: NextPage<Props> = ({ holiday }) => {
               'MMMM d, yyyy',
             )}`}
           </p>
-          <div className={styles.cardLocation}>
+          <div>
             <a
               target="_blank"
               rel="noreferrer noopener"
-              className={styles.cardLocationUrl}
               href={`https://www.google.com/maps/place/${holiday.city}+${holiday.country}`}
             >
               View on google maps
@@ -76,7 +70,7 @@ const HolidayPage: NextPage<Props> = ({ holiday }) => {
         {holiday.notes && <p>{holiday.notes}</p>}
 
         {holiday.userId === session?.data?.user?.id && (
-          <section className={classNames('df', styles.btnGroup)}>
+          <section>
             <Link href={`/holidays/edit/${holiday.id}`}>
               <button type="button" className="btn btn-secondary">
                 Edit

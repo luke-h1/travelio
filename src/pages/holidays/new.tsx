@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import InputField from '@frontend/components/InputField/InputField';
-import Page from '@frontend/components/Page/Page';
+import InputField from '@frontend/components/InputField';
+import Page from '@frontend/components/Page';
 import {
   CreateHolidayInput,
   createHolidaySchema,
@@ -9,12 +9,10 @@ import uploadImage from '@frontend/utils/cloudinary';
 import { createHoliday, createImageSignature } from '@frontend/utils/mutations';
 import toErrorMap from '@frontend/utils/toErrorMap';
 import { toFormikValidationSchema } from '@frontend/utils/toFormikValidationSchema';
-import classNames from 'classnames';
 import { Form, Formik } from 'formik';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Select from 'react-select';
-import styles from './HolidayForm.module.scss';
 
 const CreateNewHolidayPage = () => {
   const [previewImage, setPreviewImage] = useState<string>('');
@@ -58,28 +56,25 @@ const CreateNewHolidayPage = () => {
             }
           }}
         >
-          {({ isSubmitting, setFieldValue, errors }) => (
+          {({ isSubmitting, setFieldValue }) => (
             <Form>
               <InputField
                 name="title"
                 label="Title"
                 type="text"
                 placeholder="Title"
-                className={styles.holidayName}
               />
               <InputField
                 name="startDate"
                 label="Start date"
                 type="date"
                 placeholder="Start date"
-                className={styles.holidayName}
               />
               <InputField
                 name="endDate"
                 label="End date"
                 type="date"
                 placeholder="End date"
-                className={styles.holidayName}
               />
               <InputField
                 name="city"
@@ -95,12 +90,7 @@ const CreateNewHolidayPage = () => {
               />
 
               <div aria-live="polite">
-                <label
-                  htmlFor="rating"
-                  className={classNames('holidayRating', {
-                    [styles.formError]: errors.rating,
-                  })}
-                >
+                <label htmlFor="rating">
                   <p
                     className="df df-jc-sb df-ai-c"
                     style={{ marginTop: '1rem' }}
@@ -141,7 +131,6 @@ const CreateNewHolidayPage = () => {
                 <input
                   name="image"
                   type="file"
-                  className={styles.imageInput}
                   placeholder="Image"
                   accept="image/*"
                   onChange={({ target: { validity, files } }) => {

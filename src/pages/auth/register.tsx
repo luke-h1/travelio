@@ -2,19 +2,17 @@ import { RegisterInput, registerSchema } from '@frontend/schemas/auth.schema';
 import { auth } from '@frontend/utils/mutations';
 import toErrorMap from '@frontend/utils/toErrorMap';
 import { toFormikValidationSchema } from '@frontend/utils/toFormikValidationSchema';
-import classNames from 'classnames';
 import { Form, Formik } from 'formik';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import InputField from '../../components/InputField/InputField';
-import styles from './Login.module.scss';
+import InputField from '../../components/InputField';
 
 const RegisterPage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
 
   return (
-    <div className={classNames(styles.login, 'df df-fc df-ai-s df-jc-c')}>
+    <div className="flex flex-col">
       <h2>Register</h2>
       <Formik<RegisterInput>
         validationSchema={toFormikValidationSchema(registerSchema)}
