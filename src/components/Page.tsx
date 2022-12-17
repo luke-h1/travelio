@@ -8,12 +8,14 @@ interface Props {
 
 const Page = ({ children }: Props) => {
   return (
-    <div className="container">
+    <>
       <Header />
-      <main className="main">
-        <PageTransition>{children}</PageTransition>
-      </main>
-    </div>
+      <div className="container">
+        <main className="main">
+          <PageTransition>{children}</PageTransition>
+        </main>
+      </div>
+    </>
   );
 };
 export default Page;
