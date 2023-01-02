@@ -13,7 +13,7 @@ describe('toFormikValidationSchema', () => {
   });
 
   it('should fail validate with error object', async () => {
-    const object = { name: undefined, age: 32 } as unknown as never;
+    const object = { name: undefined, age: '32' } as unknown as never;
     const { schema } = makeSut();
     const { validate } = toFormikValidationSchema(schema);
 
@@ -24,8 +24,8 @@ describe('toFormikValidationSchema', () => {
         message: 'Required',
       },
       {
-        path: 'age',
         message: 'Expected number, received string',
+        path: 'age',
       },
     ];
 
