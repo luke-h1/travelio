@@ -26,7 +26,7 @@ Travel journal / tracker
 -  ✅ Holiday card
 -  ✅ Navigation
 -  ✅ Deploy CI / CD
--  ✅ Custom domain
+-  ❌ Custom domain
 -  ✅ Create, read, update and delete hols
 -  ❌ hol search
 -  ✅ Set different cookie for preview & production deploys
