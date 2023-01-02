@@ -19,18 +19,6 @@ npm ci
 
 Travel journal / tracker
 
-### Todo
-
--  ✅ Authentication
--  ✅ User roles
--  ✅ Holiday card
--  ✅ Navigation
--  ✅ Deploy CI / CD
--  ✅ Custom domain
--  ✅ Create, read, update and delete hols
--  ❌ hol search
--  ✅ Set different cookie for preview & production deploys
-
 ### Development
 
 <br />
