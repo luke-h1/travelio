@@ -3,25 +3,21 @@ import { toFormikValidationSchema } from '../toFormikValidationSchema';
 
 describe('toFormikValidationSchema', () => {
   it('should pass validate without errors', async () => {
-    // given
     const object = { name: 'mock', age: 32 };
     const { schema } = makeSut();
     const { validate } = toFormikValidationSchema(schema);
 
-    // when
     const errors = await validate(object);
 
-    // then
     expect(errors).toEqual(undefined);
   });
 
   it('should fail validate with error object', async () => {
-    // given
-    const object = { name: undefined, age: '32' } as any;
+    const object = { name: undefined, age: 32 } as unknown as never;
     const { schema } = makeSut();
     const { validate } = toFormikValidationSchema(schema);
 
-    const error = {} as any;
+    const error: { inner?: { path: string; message: string }[] } = {};
     error.inner = [
       {
         path: 'name',
@@ -33,15 +29,14 @@ describe('toFormikValidationSchema', () => {
       },
     ];
 
-    // when
     await expect(validate(object)).rejects.toMatchObject(error);
   });
 });
 
 function makeSut() {
   const schema = z.object({
-    name: z.string(), // obrigatory name
-    age: z.number().optional(), // optional age
+    name: z.string(),
+    age: z.number().optional(),
   });
 
   return {

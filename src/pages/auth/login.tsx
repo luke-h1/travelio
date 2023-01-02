@@ -2,13 +2,14 @@ import { LoginInput, loginSchema } from '@frontend/schemas/auth.schema';
 import { toFormikValidationSchema } from '@frontend/utils/toFormikValidationSchema';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
+import { NextPage } from 'next';
 import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import InputField from '../../components/InputField/InputField';
 import styles from './Login.module.scss';
 
-const LoginPage = () => {
+const LoginPage: NextPage = () => {
   const router = useRouter();
 
   return (

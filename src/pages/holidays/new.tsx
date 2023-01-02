@@ -11,12 +11,13 @@ import toErrorMap from '@frontend/utils/toErrorMap';
 import { toFormikValidationSchema } from '@frontend/utils/toFormikValidationSchema';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
+import { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Select from 'react-select';
 import styles from './HolidayForm.module.scss';
 
-const CreateNewHolidayPage = () => {
+const CreateNewHolidayPage: NextPage = () => {
   const [previewImage, setPreviewImage] = useState<string>('');
   const router = useRouter();
 

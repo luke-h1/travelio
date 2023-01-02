@@ -13,7 +13,7 @@ import { toFormikValidationSchema } from '@frontend/utils/toFormikValidationSche
 import { Holiday } from '@prisma/client';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -24,7 +24,7 @@ interface Props {
   holiday: Holiday;
 }
 
-const UpdateHolidayPage = ({ holiday }: Props) => {
+const UpdateHolidayPage: NextPage<Props> = ({ holiday }) => {
   const [previewImage, setPreviewImage] = useState<string>(holiday.image);
 
   const router = useRouter();

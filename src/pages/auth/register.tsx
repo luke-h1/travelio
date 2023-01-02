@@ -4,12 +4,13 @@ import toErrorMap from '@frontend/utils/toErrorMap';
 import { toFormikValidationSchema } from '@frontend/utils/toFormikValidationSchema';
 import classNames from 'classnames';
 import { Form, Formik } from 'formik';
+import { NextPage } from 'next';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import InputField from '../../components/InputField/InputField';
 import styles from './Login.module.scss';
 
-const RegisterPage = () => {
+const RegisterPage: NextPage = () => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const router = useRouter();
 

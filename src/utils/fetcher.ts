@@ -1,10 +1,10 @@
-export default function fetcher<T = Response>(
+export default async function fetcher<T = Response>(
   endpoint: string,
   method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE',
   data?: unknown,
   headers?: HeadersInit,
-) {
-  return fetch(`${window.location.origin}/api${endpoint}`, {
+): Promise<T> {
+  const res = await fetch(`${window.location.origin}/api${endpoint}`, {
     method,
     // credentials: 'include',
     headers: {
@@ -12,12 +12,11 @@ export default function fetcher<T = Response>(
       ...headers,
     },
     body: data ? JSON.stringify(data) : undefined,
-  }).then(res => {
-    if (res.status > 399 && res.status < 200) {
-      return res.json().then(e => {
-        throw new Error(e.message);
-      });
-    }
-    return res.json() as Promise<T>;
   });
+  if (res.status > 399 && res.status < 200) {
+    return res.json().then(e => {
+      throw new Error(e.message);
+    });
+  }
+  return res.json() as Promise<T>;
 }

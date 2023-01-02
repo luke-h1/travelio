@@ -11,7 +11,7 @@ export class ValidationError extends Error {
   }
 }
 
-function createValidationError(e: z.ZodError) {
+function createValidationError(e: z.ZodError): ValidationError {
   const error = new ValidationError(e.message);
   error.inner = e.errors.map(err => ({
     message: err.message,

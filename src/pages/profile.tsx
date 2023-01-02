@@ -1,14 +1,14 @@
 import Page from '@frontend/components/Page/Page';
 import prisma from '@frontend/utils/prisma';
 import { User } from '@prisma/client';
-import { GetServerSideProps } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
 import { getSession } from 'next-auth/react';
 
 interface Props {
   user: User;
 }
 
-const ProfilePage = ({ user }: Props) => {
+const ProfilePage: NextPage<Props> = ({ user }) => {
   return (
     <Page>
       <h1>

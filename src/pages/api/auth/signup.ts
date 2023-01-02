@@ -1,14 +1,12 @@
 import { makeApiResponse } from '@frontend/types/util';
+import { withMethods } from '@frontend/utils/api-middlewares/withMethods';
 import prisma from '@frontend/utils/prisma';
 import bcrypt from 'bcrypt';
 import omit from 'lodash/omit';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 // eslint-disable-next-line consistent-return
-export default async (req: NextApiRequest, res: NextApiResponse) => {
-  if (req.method !== 'POST') {
-    return;
-  }
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     username,
     firstName,
@@ -63,3 +61,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const response = makeApiResponse(omit(user, 'password'), []);
   res.status(200).json(response);
 };
+export default withMethods(['POST'], handler);

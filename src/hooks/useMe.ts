@@ -2,7 +2,7 @@ import prisma from '@frontend/utils/prisma';
 import { User } from '@prisma/client';
 import { useSession } from 'next-auth/react';
 
-const useMe = async () => {
+const useMe = async (): Promise<User | null> => {
   const { data } = await useSession();
 
   const user = await prisma.user.findFirst({
@@ -11,6 +11,6 @@ const useMe = async () => {
     },
   });
 
-  return user as User;
+  return user;
 };
 export default useMe;

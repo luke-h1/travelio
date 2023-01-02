@@ -1,7 +1,9 @@
-const AdminPage = () => {
+import { NextPage } from 'next';
+
+const AdminPage: NextPage = () => {
   return (
     <div>
-      <h1>Admin util page</h1>
+      <h1>Admin page</h1>
     </div>
   );
 };
