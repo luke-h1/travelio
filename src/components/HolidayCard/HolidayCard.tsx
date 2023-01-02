@@ -1,6 +1,6 @@
 import { Holiday } from '@prisma/client';
-import { format, parseISO } from 'date-fns';
 import Link from 'next/link';
+import FormattedDate from '../FormattedDate/FormattedDate';
 import styles from './HolidayCard.module.scss';
 
 interface Props {
@@ -24,10 +24,8 @@ const HolidayCard = ({ holiday }: Props) => {
           </h2>
           <h3 className={styles.cardTitle}>{holiday.title}</h3>
           <p className={styles.cardDate}>
-            {`${format(parseISO(holiday.startDate), 'MMMM d, yyyy')} - ${format(
-              parseISO(holiday.endDate),
-              'MMMM d, yyyy',
-            )}`}
+            <FormattedDate>{holiday.startDate}</FormattedDate>
+            <FormattedDate>{holiday.endDate}</FormattedDate>
           </p>
           <p className={styles.cardDescription}>{holiday.notes}</p>
         </div>
