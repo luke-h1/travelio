@@ -5,13 +5,13 @@
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/en/)
-- [NPM](https://npmjs.com)
+- [PNPM](https://pnpm.io/)
 - [NVM](https://github.com/nvm-sh/nvm)
 
 Install NPM packages
 
 ```
-npm ci
+pnpm i
 ```
 
 
@@ -32,19 +32,19 @@ docker-compose up
 Make migrations
 
 ```
-npm run db:push
+pnpm run db:push
 ```
 
 Start prisma studio
 
 ```
-npm run db:studio
+pnpm run db:studio
 ```
 
 Start the frontend server
 
 ```
-npm run dev
+pnpm run dev
 ```
 
 
