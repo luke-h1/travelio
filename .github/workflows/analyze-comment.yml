@@ -46,7 +46,7 @@ jobs:
           echo ::set-output name=body::$body
           echo ::set-output name=pr-number::$pr_number
       - name: Find Comment
-        uses: luke-h1/find-comment@v1
+        uses: luke-h1/find-comment@v2
         if: success()
         id: fc
         with:
